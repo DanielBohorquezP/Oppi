@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+  Sistema de diseño Oppi — dirección "editorial + índigo":
+  el índigo oscuro (--color-ink-black) es el color dominante de las superficies
+  oscuras, el coral (--color-coral-pulse) es el ÚNICO acento de CTA/highlight del
+  sitio, y el amarillo de marca (--color-brand-yellow) queda reservado para el logo
+  y detalles muy puntuales — ya no se usa como fondo de secciones completas.
+  Las 3 tarjetas de servicio (Web/SEO/SEM) se diferencian con un borde superior de
+  su propio acento sobre fondo blanco, no con un fondo pastel completo (ver
+  components/ui/PastelCard.tsx). Las superficies neutras alternas usan un marfil
+  cálido (--color-cloud-gray) en vez de gris plano o pasteles de color.
+*/
+
+@theme {
+  /* Colores de marca */
+  --color-brand-yellow: #ffda00;
+  --color-amber-edge: #bfa300;
+  --color-coral-pulse: #ff643b;
+  --color-indigo-bloom: #460095;
+  --color-deep-teal: #003642;
+  --color-orchid-tint: #f3b3fe;
+  --color-sky-signal: #00b4dc;
+  --color-aubergine: #47264c;
+  --color-ink-black: #09012e;
+  --color-paper-white: #ffffff;
+  --color-ash: #a6a6a6;
+  --color-slate: #7a7a7a;
+  --color-graphite: #3d3d3d;
+  --color-charcoal: #333333;
+  --color-frost-gray: #e0e0e0;
+  --color-cloud-gray: #f6f3ee;
+  --color-lavender-mist: #eee2ff;
+
+  /*
+    Tipografía (la variable --font-dm-sans la define next/font en layout.tsx).
+    Cada tamaño lleva su propio line-height — sin esto, el navegador aplica
+    el interlineado "normal" de DM Sans, que se ve demasiado suelto en
+    headings grandes.
+
+    --font-mono-metric es un placeholder (Space Mono, cargada en layout.tsx
+    como --font-space-mono) usado solo en cifras destacadas (stats, KPIs de
+    SEM). Se reemplaza cuando llegue la tipografía definitiva de marca —
+    ver PROYECTO.md.
+  */
+  --font-mono-metric: var(--font-space-mono), "Courier New", monospace;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.2;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.38;
+  --text-body: 16px;
+  --text-body--line-height: 1.38;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.4;
+  --text-subheading: 20px;
+  --text-subheading--line-height: 1.33;
+  --text-heading-sm: 24px;
+  --text-heading-sm--line-height: 1.3;
+  --text-heading: 32px;
+  --text-heading--line-height: 1.2;
+  --text-heading-lg: 48px;
+  --text-heading-lg--line-height: 1.1;
+  --text-display: 72px;
+  --text-display--line-height: 1.05;
+  --text-display-xl: 116px;
+  --text-display-xl--line-height: 0.95;
+
+  /* Espaciado */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+  --spacing-48: 48px;
+  --spacing-56: 56px;
+  --spacing-64: 64px;
+  --spacing-80: 80px;
+  --spacing-96: 96px;
+  --spacing-120: 120px;
+
+  /* Radios */
+  --radius-tags: 9999px;
+  --radius-cards: 24px;
+  --radius-cards-sm: 16px;
+  --radius-icons: 8px;
+  --radius-buttons: 40px;
+
+  /* Sombras */
+  --shadow-subtle: 0px 1px 1px 0px rgba(0, 0, 0, 0.05);
+
+  /* Superficies — el usuario pidió base BLANCA (no lavanda) con amarillo como segundo color principal */
+  --color-page-canvas: #ffffff;
+  --color-card-surface: #ffffff;
+  --color-pastel-card: #fff3cc;
+  --color-dark-brand-surface: #000000;
+}
+
+:root {
+  --background: var(--color-page-canvas);
+  --foreground: var(--color-ink-black);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-dm-sans);
+  font-feature-settings: "ss03";
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-amber-edge);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.tracking-heading {
+  letter-spacing: -0.019em;
+}
+.tracking-display {
+  letter-spacing: -0.028em;
+}
+
+@keyframes star-btn {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+/*
+  Definida como clase plana (no como token --animate-* de @theme): Tailwind v4
+  no resuelve correctamente valores de @theme que contienen var()/calc()
+  dentro de "animate-*", así que se evita esa capa por completo.
+*/
+.animate-star-btn {
+  animation: star-btn calc(var(--duration) * 1s) linear infinite;
+}
+
+.prose-oppi h2 {
+  margin-top: 40px;
+  margin-bottom: 12px;
+  font-size: var(--text-heading-sm);
+  font-weight: 700;
+  color: var(--color-ink-black);
+}
+.prose-oppi p {
+  margin-top: 16px;
+  font-size: var(--text-body-lg);
+  line-height: 1.6;
+  color: var(--color-graphite);
+}
+.prose-oppi a {
+  color: var(--color-amber-edge);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.prose-oppi strong {
+  color: var(--color-ink-black);
+}
