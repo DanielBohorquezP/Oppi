@@ -76,7 +76,7 @@ export default function SeoPage() {
 
       <section className="px-24 py-64 md:px-80">
         <SectionHeading eyebrow="Qué incluye" title="Una estrategia completa, no solo palabras clave" />
-        <Reveal className="mx-auto mt-40 grid max-w-[1280px] gap-24 md:grid-cols-3">
+        <Reveal className="mx-auto mt-40 grid max-w-[1280px] gap-24 md:grid-cols-2 lg:grid-cols-4">
           <PastelCard wash="yellow">
             <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
               Auditoría técnica
@@ -102,6 +102,17 @@ export default function SeoPage() {
             <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
               Datos estructurados y consistencia de tu ficha de Google para
               búsquedas cercanas.
+            </p>
+          </PastelCard>
+          <PastelCard wash="peach">
+            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
+              Visibilidad en IA (GEO)
+            </h3>
+            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
+              Estructuramos tu contenido para que ChatGPT, Gemini y Copilot
+              lo puedan leer y citar como fuente, no solo Google. Con 900M+
+              de usuarios semanales en ChatGPT (OpenAI, 2026), es donde ya
+              buscan tus clientes.
             </p>
           </PastelCard>
         </Reveal>

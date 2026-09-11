@@ -10,7 +10,7 @@ const before = [
 
 const after = [
   "Web enfocada en una sola acción clara",
-  "Apareces primero cuando te buscan en Google, orgánico y pagado",
+  "Apareces primero en Google, y también cuando te preguntan a ChatGPT o Gemini",
   "Google Ads: apareces arriba mientras tu SEO crece",
   "Reportes mensuales claros de resultados",
 ];

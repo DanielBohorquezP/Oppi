@@ -33,7 +33,7 @@ export const services: Service[] = [
     tag: "Crecimiento",
     title: "Estrategia SEO",
     summary:
-      "Posicionamos tu negocio en Google para que te encuentren clientes listos para comprar.",
+      "Posicionamos tu negocio en Google y en la IA (ChatGPT, Gemini) para que te encuentren clientes listos para comprar.",
     wash: "lilac",
     accentVar: "var(--color-ink-black)",
   },

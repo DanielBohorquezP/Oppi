@@ -12,7 +12,7 @@ const items = [
   {
     icon: <SeoIcon />,
     title: "Estrategia SEO",
-    description: "Contenido y estructura técnica para que te encuentren en Google.",
+    description: "Contenido y estructura técnica para que te encuentren en Google y en respuestas de ChatGPT, Gemini y otras IA.",
   },
   {
     icon: <AdsIcon />,
