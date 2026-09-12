@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
-import { DM_Sans, Space_Mono } from "next/font/google";
+import { Space_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyNotification } from "@/components/layout/StickyNotification";
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
+const comfortaa = localFont({
+  src: "./fonts/comfortaa/Comfortaa-VariableFont_wght.ttf",
+  variable: "--font-comfortaa",
+  weight: "300 700",
+  display: "swap",
+});
+
+// Fuente de marca para títulos (h1-h6) — ver app/fonts/archivo-black/.
+const archivoBlack = localFont({
+  src: "./fonts/archivo-black/ArchivoBlack-Regular.ttf",
+  variable: "--font-archivo-black",
+  display: "swap",
 });
 
 // Placeholder mientras llega la tipografía definitiva de marca — usada solo
@@ -28,7 +38,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="es"
-      className={`${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
+      className={`${comfortaa.variable} ${archivoBlack.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <Header />
