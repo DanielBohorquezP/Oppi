@@ -97,8 +97,8 @@ export default function QuienesSomosPage() {
               </p>
             </div>
             <div className="flex md:justify-end">
-              <Button href="mailto:hola@oppi.com" variant="coral">
-                Escribir a Oppi
+              <Button href="/quienes-somos#contacto" variant="coral">
+                Agenda una llamada
               </Button>
             </div>
           </div>

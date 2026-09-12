@@ -5,6 +5,8 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { StickyNotification } from "@/components/layout/StickyNotification";
+import { ContactModalProvider } from "@/lib/contact-modal";
+import { ContactModal } from "@/components/ui/ContactModal";
 
 const comfortaa = localFont({
   src: "./fonts/comfortaa/Comfortaa-VariableFont_wght.ttf",
@@ -41,10 +43,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${comfortaa.variable} ${archivoBlack.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <StickyNotification />
+        <ContactModalProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <StickyNotification />
+          <ContactModal />
+        </ContactModalProvider>
       </body>
     </html>
   );

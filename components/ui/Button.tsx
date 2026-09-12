@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { CONTACT_TRIGGER_HREF, useContactModal } from "@/lib/contact-modal";
 
 type Variant = "coral" | "ghost-dark" | "ghost-light" | "nav-outline";
 
@@ -95,6 +96,7 @@ export function Button({
   const style = variantStyles[variant];
   const linkRef = useStarPath<HTMLAnchorElement>();
   const buttonRef = useStarPath<HTMLButtonElement>();
+  const { open: openContactModal } = useContactModal();
 
   const cssVars = {
     "--duration": 3,
@@ -139,6 +141,20 @@ export function Button({
       </span>
     </>
   );
+
+  if (href === CONTACT_TRIGGER_HREF) {
+    return (
+      <button
+        ref={buttonRef}
+        type="button"
+        onClick={openContactModal}
+        className={classes}
+        style={cssVars}
+      >
+        {content}
+      </button>
+    );
+  }
 
   if (href) {
     return (

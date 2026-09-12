@@ -1,12 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useContactModal } from "@/lib/contact-modal";
 
 const STORAGE_KEY = "oppi-notification-dismissed";
 
 export function StickyNotification() {
   const [visible, setVisible] = useState(false);
+  const { open: openContactModal } = useContactModal();
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY) === "1") return;
@@ -36,13 +37,16 @@ export function StickyNotification() {
       <p className="mt-4 text-caption text-[var(--color-frost-gray)]">
         Agenda una llamada gratuita de 20 minutos.
       </p>
-      <Link
-        href="/quienes-somos#contacto"
-        onClick={dismiss}
+      <button
+        type="button"
+        onClick={() => {
+          dismiss();
+          openContactModal();
+        }}
         className="mt-16 inline-block rounded-[var(--radius-tags)] bg-[var(--color-brand-yellow)] px-16 py-8 text-caption font-semibold text-[var(--color-ink-black)] transition-opacity hover:opacity-90"
       >
         Agendar ahora
-      </Link>
+      </button>
     </div>
   );
 }
