@@ -32,9 +32,9 @@ const cases = [
   {
     name: "Cyrrus Consulting Services",
     industry: "Consultoría empresarial",
-    result: "Remodelación completa de web e identidad de marca",
+    result: "Rediseño de su estrategia digital",
     description:
-      "“Oppi hizo una remodelación completa de nuestra página web y de nuestra identidad de marca. Renovaron desde los servicios hasta la imagen, y hoy nuestra presencia digital se siente nueva.”",
+      "“Oppi rediseñó por completo nuestra estrategia digital. Replantearon desde cómo presentamos los servicios hasta la forma en que nos encuentran los clientes, y hoy nuestra presencia digital se siente nueva.”",
     src: "/clientes/cyrrus-consulting.png",
     href: "https://cyrruscs.com/",
   },
