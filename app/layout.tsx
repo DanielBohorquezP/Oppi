@@ -45,6 +45,39 @@ export const metadata: Metadata = {
     "Desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM). Oppi ayuda a tu empresa a conseguir más clientes.",
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  alternateName: "Oppi Marketing Digital",
+  url: site.url,
+  logo: `${site.url}/icon.png`,
+  image: `${site.url}/icon.png`,
+  description:
+    "Agencia de marketing digital: desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM) para empresas.",
+  telephone: `+${site.whatsappNumber}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: site.city,
+    addressCountry: "CO",
+  },
+  areaServed: { "@type": "Country", name: "Colombia" },
+  knowsAbout: [
+    "Desarrollo web",
+    "SEO",
+    "Google Ads",
+    "Visibilidad en buscadores con IA",
+  ],
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "customer service",
+    telephone: `+${site.whatsappNumber}`,
+    areaServed: "CO",
+    availableLanguage: "es",
+  },
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -52,6 +85,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${comfortaa.variable} ${archivoBlack.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(/</g, "\u003c"),
+          }}
+        />
         <ContactModalProvider>
           <Header />
           <main className="flex-1">{children}</main>
