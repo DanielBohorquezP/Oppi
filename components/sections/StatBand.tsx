@@ -3,10 +3,10 @@ import { CountingNumber } from "@/components/ui/counting-number";
 
 const cards = [
   {
-    label: "Negocios impulsados",
-    tag: "Clientes",
-    prefix: "+",
-    target: 120,
+    label: "Servicios en un solo equipo",
+    tag: "Integrado",
+    prefix: "",
+    target: 3,
     suffix: "",
   },
   {

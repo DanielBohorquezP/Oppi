@@ -105,7 +105,7 @@ export function Button({
   } as CSSProperties;
 
   const classes = cn(
-    "relative inline-flex items-center justify-center gap-8 overflow-hidden rounded-[var(--radius-buttons)] font-semibold transition-opacity hover:opacity-90",
+    "relative inline-flex items-center justify-center gap-8 overflow-hidden rounded-[var(--radius-buttons)] font-semibold transition-[opacity,transform] duration-150 ease-out hover:opacity-90 active:scale-[0.97]",
     style.sizeClass,
     className
   );

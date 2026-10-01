@@ -29,5 +29,6 @@ export const team: Record<"desarrollo-web" | "seo" | "sem", TeamMember> = {
     role: "Google Ads (SEM)",
     blurb: "Gestiona y optimiza las campañas de Google Ads de cada cliente.",
     accent: "var(--color-coral-pulse)",
+    photoSrc: "/Integrantes/Juanse.png",
   },
 };

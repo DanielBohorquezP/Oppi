@@ -4,43 +4,38 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { CircularTestimonials } from "@/components/ui/circular-testimonials";
 
 export const metadata: Metadata = {
-  title: "Experiencia — Oppi",
+  title: "Experiencia | Oppi",
   description:
     "Casos de éxito y resultados de negocios que trabajan con Oppi para vender más.",
 };
 
 const cases = [
   {
-    name: "Clínica Dental Sonrisa",
-    industry: "Salud",
-    result: "3.5x más citas agendadas desde la web",
+    name: "Claudia Ladino",
+    industry: "Abogada tributaria",
+    result: "De cero presencia digital a un nuevo canal de clientes",
     description:
-      "Rediseñamos su sitio con foco en agendar citas: formulario corto, WhatsApp directo y testimonios reales.",
-    src: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=800&q=80",
+      "“No tenía página web y hoy mi sitio es otro canal de atención y de adquisición de clientes. Oppi lo construyó desde cero y explica mis servicios tributarios con claridad y sin complicaciones.”",
+    src: "/clientes/claudia-ladino.png",
+    href: "https://claudialadino.com/",
   },
   {
-    name: "Ferretería Central",
-    industry: "Retail",
-    result: "+65% tráfico orgánico en 6 meses",
+    name: "Dr. Luis Anillo",
+    industry: "Asesoría estadística en investigación en salud",
+    result: "Web propia que vende y es recomendada por la IA",
     description:
-      "Estrategia SEO local: fichas de producto optimizadas, contenido de guías y schema markup para negocio local.",
-    src: "https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=800&q=80",
+      "“Yo no tenía página web. Oppi me la desarrolló y hoy la uso como canal de ventas. Además, la inteligencia artificial me recomienda cuando alguien busca asesoría estadística para investigación en salud.”",
+    src: "/clientes/luis-anillo.png",
+    href: "https://www.dranillostats.com/",
   },
   {
-    name: "Taller Andino",
-    industry: "Servicios automotrices",
-    result: "-28% costo por cliente en 90 días",
+    name: "Cyrrus Consulting Services",
+    industry: "Consultoría empresarial",
+    result: "Remodelación completa de web e identidad de marca",
     description:
-      "Migramos de campañas genéricas a una estructura por servicio en Google Ads, con remarketing a quienes cotizaron sin agendar.",
-    src: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?auto=format&fit=crop&w=800&q=80",
-  },
-  {
-    name: "Estudio Lumen",
-    industry: "Fotografía de eventos",
-    result: "3x más consultas calificadas por mes",
-    description:
-      "Campañas de búsqueda estacionales y remarketing de display en Google Ads que llenaron su calendario en temporada alta.",
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80",
+      "“Oppi hizo una remodelación completa de nuestra página web y de nuestra identidad de marca. Renovaron desde los servicios hasta la imagen, y hoy nuestra presencia digital se siente nueva.”",
+    src: "/clientes/cyrrus-consulting.png",
+    href: "https://cyrruscs.com/",
   },
 ];
 
@@ -49,6 +44,7 @@ const caseTestimonials = cases.map((item) => ({
   name: item.name,
   designation: `${item.industry} · ${item.result}`,
   src: item.src,
+  href: item.href,
 }));
 
 export default function ExperienciaPage() {

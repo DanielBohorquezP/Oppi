@@ -3,9 +3,10 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PastelCard } from "@/components/ui/PastelCard";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
+import { site, whatsappHref } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Quiénes Somos — Oppi",
+  title: "Quiénes Somos | Oppi",
   description:
     "Conoce a Oppi: la organización que ayuda a empresas a aumentar su visibilidad digital y sus ventas.",
 };
@@ -92,9 +93,14 @@ export default function QuienesSomosPage() {
               <p className="mt-12 text-body text-[var(--color-frost-gray)]">
                 Escríbenos y agenda una llamada de 20 minutos sin costo.
               </p>
-              <p className="mt-16 text-body-sm text-[var(--color-frost-gray)]">
-                hola@oppi.com · +51 999 999 999
-              </p>
+              <a
+                href={whatsappHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-block py-12 text-body-sm text-[var(--color-frost-gray)] underline-offset-4 hover:text-white hover:underline"
+              >
+                WhatsApp: {site.whatsappDisplay}
+              </a>
             </div>
             <div className="flex md:justify-end">
               <Button href="/quienes-somos#contacto" variant="coral">

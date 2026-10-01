@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "@/content/services";
+import { site, whatsappHref } from "@/content/site";
 
 export function Footer() {
   return (
@@ -23,10 +24,10 @@ export function Footer() {
 
         <div>
           <p className="text-body-sm font-semibold text-white">Servicios</p>
-          <ul className="mt-16 space-y-8 text-body-sm text-[var(--color-frost-gray)]">
+          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
             {services.map((service) => (
               <li key={service.href}>
-                <Link href={service.href} className="hover:text-white">
+                <Link href={service.href} className="inline-block py-12 hover:text-white">
                   {service.navLabel}
                 </Link>
               </li>
@@ -36,19 +37,19 @@ export function Footer() {
 
         <div>
           <p className="text-body-sm font-semibold text-white">Empresa</p>
-          <ul className="mt-16 space-y-8 text-body-sm text-[var(--color-frost-gray)]">
+          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
             <li>
-              <Link href="/quienes-somos" className="hover:text-white">
+              <Link href="/quienes-somos" className="inline-block py-12 hover:text-white">
                 Quiénes Somos
               </Link>
             </li>
             <li>
-              <Link href="/experiencia" className="hover:text-white">
+              <Link href="/experiencia" className="inline-block py-12 hover:text-white">
                 Experiencia
               </Link>
             </li>
             <li>
-              <Link href="/blog" className="hover:text-white">
+              <Link href="/blog" className="inline-block py-12 hover:text-white">
                 Blog
               </Link>
             </li>
@@ -57,9 +58,17 @@ export function Footer() {
 
         <div>
           <p className="text-body-sm font-semibold text-white">Contacto</p>
-          <ul className="mt-16 space-y-8 text-body-sm text-[var(--color-frost-gray)]">
-            <li>hola@oppi.com</li>
-            <li>+51 999 999 999</li>
+          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
+            <li>
+              <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block py-12 hover:text-white"
+            >
+              WhatsApp: {site.whatsappDisplay}
+            </a>
+            </li>
           </ul>
         </div>
       </div>

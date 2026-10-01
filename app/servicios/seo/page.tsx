@@ -10,7 +10,7 @@ import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Estrategia SEO para visibilidad y ventas orgánicas — Oppi",
+  title: "Estrategia SEO para visibilidad y ventas orgánicas | Oppi",
   description:
     "Trabajamos la estructura técnica, el contenido y las señales de autoridad de tu sitio para que aparezcas primero cuando tus clientes buscan lo que ofreces.",
 };
@@ -65,6 +65,7 @@ export default function SeoPage() {
   return (
     <>
       <ServiceIntro
+        serviceId="seo"
         eyebrow="Crecimiento orgánico"
         title="Que te encuentren cuando buscan lo que ofreces"
         description="Trabajamos la estructura técnica, el contenido y las señales de autoridad de tu sitio para posicionarte donde tus clientes ya están buscando."
@@ -128,13 +129,14 @@ export default function SeoPage() {
       <section className="px-24 py-64 md:px-80">
         <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 border-t-4 border-t-[var(--color-indigo-bloom)] bg-white p-32 text-center shadow-[var(--shadow-subtle)] md:p-48">
           <p className="text-body-sm font-semibold text-[var(--color-charcoal)]">
-            Resultado típico a 6 meses
+            Lo que ves cada mes
           </p>
-          <p className="tracking-heading mt-8 font-mono-metric text-display font-bold text-[var(--color-ink-black)]">
-            +65%
+          <p className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-ink-black)]">
+            Un reporte claro
           </p>
-          <p className="text-body text-[var(--color-graphite)]">
-            tráfico orgánico mensual
+          <p className="mx-auto mt-8 max-w-[560px] text-body text-[var(--color-graphite)]">
+            Tráfico orgánico, posiciones y consultas que llegan desde Google y
+            la IA, explicados sin tecnicismos.
           </p>
         </Reveal>
       </section>

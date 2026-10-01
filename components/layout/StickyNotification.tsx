@@ -45,7 +45,7 @@ export function StickyNotification() {
         }}
         className="mt-16 inline-block rounded-[var(--radius-tags)] bg-[var(--color-brand-yellow)] px-16 py-8 text-caption font-semibold text-[var(--color-ink-black)] transition-opacity hover:opacity-90"
       >
-        Agendar ahora
+        Agenda una llamada
       </button>
     </div>
   );

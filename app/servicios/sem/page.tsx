@@ -10,7 +10,7 @@ import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Google Ads y SEM que generan clientes hoy — Oppi",
+  title: "Google Ads y SEM que generan clientes hoy | Oppi",
   description:
     "Gestionamos campañas de búsqueda, display y remarketing en Google Ads con optimización continua para bajar tu costo por cliente y generar ventas mientras el SEO madura.",
 };
@@ -65,6 +65,7 @@ export default function SemPage() {
   return (
     <>
       <ServiceIntro
+        serviceId="sem"
         eyebrow="Resultados inmediatos"
         title="Clientes nuevos mientras tu SEO todavía está creciendo"
         description="Diseñamos y gestionamos campañas de Google Ads (búsqueda, display y remarketing) enfocadas en un solo objetivo: bajar tu costo por cliente y llenar tu agenda o tu carrito, no solo generar clics."
@@ -120,13 +121,14 @@ export default function SemPage() {
       <section className="px-24 py-64 md:px-80">
         <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 border-t-4 border-t-[var(--color-coral-pulse)] bg-white p-32 text-center shadow-[var(--shadow-subtle)] md:p-48">
           <p className="text-body-sm font-semibold text-[var(--color-charcoal)]">
-            Resultado típico a 90 días
+            Cómo cuidamos tu inversión
           </p>
-          <p className="tracking-heading mt-8 font-mono-metric text-display font-bold text-[var(--color-coral-pulse)]">
-            -32%
+          <p className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-coral-pulse)]">
+            Optimización semanal
           </p>
-          <p className="text-body text-[var(--color-graphite)]">
-            costo por adquisición (CPA)
+          <p className="mx-auto mt-8 max-w-[560px] text-body text-[var(--color-graphite)]">
+            Ajustamos palabras clave, anuncios y presupuesto cada semana para
+            que tu inversión rinda más.
           </p>
         </Reveal>
       </section>

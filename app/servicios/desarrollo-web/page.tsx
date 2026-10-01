@@ -8,9 +8,10 @@ import { CtaBand } from "@/components/sections/CtaBand";
 import { Reveal } from "@/components/motion/Reveal";
 import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
 import { team } from "@/content/team";
+import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Desarrollo web optimizado para ventas — Oppi",
+  title: `Diseño web para empresas en ${site.city} y Colombia | Oppi`,
   description:
     "Diseñamos y construimos sitios web rápidos y enfocados en conversión: cada sección está pensada para llevar al visitante a comprar, agendar o contactarte.",
 };
@@ -38,7 +39,19 @@ const steps = [
   },
 ];
 
+const idealFor = [
+  "Servicios profesionales",
+  "Negocios locales",
+  "Marcas en crecimiento",
+  "Empresas que quieren renovar su sitio",
+];
+
 const faqs = [
+  {
+    question: "¿Necesito una web nueva o solo SEO o Google Ads?",
+    answer:
+      "Si tu sitio actual es lento, se ve desactualizado o no tiene un llamado a la acción claro, conviene empezar por la web: el SEO y los anuncios rinden más sobre un sitio que convierte. Si tu web ya funciona, te recomendamos ir directo a SEO (/servicios/seo) o Google Ads (/servicios/sem).",
+  },
   {
     question: "¿Cuánto tiempo toma tener mi sitio listo?",
     answer:
@@ -65,14 +78,36 @@ export default function DesarrolloWebPage() {
   return (
     <>
       <ServiceIntro
-        eyebrow="Desarrollo web"
+        serviceId="desarrollo-web"
+        eyebrow={`Diseño web en ${site.city} y toda Colombia`}
         title="Un sitio que no solo se ve bien, vende"
+        tagline="Sin plantillas: pensado alrededor de tu marca y de lo que tu cliente busca primero."
+        secondaryHref="#ideal-para"
+        secondaryLabel="¿Es para mí?"
         description="Diseñamos y construimos sitios rápidos, claros y enfocados en conversión: cada sección está pensada para llevar al visitante a comprar, agendar o contactarte."
         ctaHref="/quienes-somos#contacto"
         ctaLabel="Agenda una llamada"
       />
 
       <TeamMemberIntro member={team["desarrollo-web"]} />
+
+      <section id="ideal-para" className="px-24 pt-64 md:px-80">
+        <div className="mx-auto max-w-[960px] text-center">
+          <p className="text-body-sm font-semibold uppercase tracking-wide text-[var(--color-graphite)]">
+            Ideal para
+          </p>
+          <ul className="mt-16 flex flex-wrap justify-center gap-12">
+            {idealFor.map((item) => (
+              <li
+                key={item}
+                className="rounded-full border border-black/10 bg-white px-20 py-8 text-body-sm font-medium text-[var(--color-ink-black)]"
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       <section className="px-24 py-64 md:px-80">
         <SectionHeading

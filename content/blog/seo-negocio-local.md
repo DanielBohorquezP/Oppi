@@ -27,4 +27,4 @@ Google prioriza sitios rápidos y fáciles de usar en celular, especialmente par
 
 Un negocio con reseñas recientes y de calidad envía una señal fuerte de relevancia y confianza, tanto a Google como a los clientes potenciales.
 
-Trabajar estos cinco puntos de forma constante, mes a mes, es lo que mueve la aguja en SEO local — no trucos ni atajos.
+Trabajar estos cinco puntos de forma constante, mes a mes, es lo que mueve la aguja en SEO local, no trucos ni atajos.

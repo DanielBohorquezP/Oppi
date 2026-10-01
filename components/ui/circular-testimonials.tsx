@@ -14,6 +14,7 @@ interface Testimonial {
   name: string;
   designation: string;
   src: string;
+  href?: string;
 }
 interface Colors {
   name?: string;
@@ -56,9 +57,9 @@ export const CircularTestimonials = ({
   const colorName = colors.name ?? "#000";
   const colorDesignation = colors.designation ?? "#6b7280";
   const colorTestimony = colors.testimony ?? "#4b5563";
-  const colorArrowBg = colors.arrowBackground ?? "#141414";
+  const colorArrowBg = colors.arrowBackground ?? "#040054";
   const colorArrowFg = colors.arrowForeground ?? "#f1f1f7";
-  const colorArrowHoverBg = colors.arrowHoverBackground ?? "#00a6fb";
+  const colorArrowHoverBg = colors.arrowHoverBackground ?? "#f8673e";
   const fontSizeName = fontSizes.name ?? "1.5rem";
   const fontSizeDesignation = fontSizes.designation ?? "0.925rem";
   const fontSizeQuote = fontSizes.quote ?? "1.125rem";
@@ -102,17 +103,6 @@ export const CircularTestimonials = ({
     };
   }, [autoplay, testimonialsLength]);
 
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") handlePrev();
-      if (e.key === "ArrowRight") handleNext();
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-    // eslint-disable-next-line
-  }, [activeIndex, testimonialsLength]);
-
   // Navigation handlers
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % testimonialsLength);
@@ -123,12 +113,20 @@ export const CircularTestimonials = ({
     if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
   }, [testimonialsLength]);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "ArrowLeft") handlePrev();
+      if (e.key === "ArrowRight") handleNext();
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [handlePrev, handleNext]);
+
   // Compute transforms for each image (always show 3: left, center, right)
   function getImageStyle(index: number): React.CSSProperties {
     const gap = calculateGap(containerWidth);
     const maxStickUp = gap * 0.8;
-    const offset = (index - activeIndex + testimonialsLength) % testimonialsLength;
-    // const zIndex = testimonialsLength - Math.abs(offset);
     const isActive = index === activeIndex;
     const isLeft = (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
     const isRight = (activeIndex + 1) % testimonialsLength === index;
@@ -138,7 +136,7 @@ export const CircularTestimonials = ({
         opacity: 1,
         pointerEvents: "auto",
         transform: `translateX(0px) translateY(0px) scale(1) rotateY(0deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(0.23,1,0.32,1)",
       };
     }
     if (isLeft) {
@@ -147,7 +145,7 @@ export const CircularTestimonials = ({
         opacity: 1,
         pointerEvents: "auto",
         transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(0.23,1,0.32,1)",
       };
     }
     if (isRight) {
@@ -156,7 +154,7 @@ export const CircularTestimonials = ({
         opacity: 1,
         pointerEvents: "auto",
         transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`,
-        transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+        transition: "all 0.8s cubic-bezier(0.23,1,0.32,1)",
       };
     }
     // Hide all other images
@@ -164,7 +162,7 @@ export const CircularTestimonials = ({
       zIndex: 1,
       opacity: 0,
       pointerEvents: "none",
-      transition: "all 0.8s cubic-bezier(.4,2,.3,1)",
+      transition: "all 0.8s cubic-bezier(0.23,1,0.32,1)",
     };
   }
 
@@ -242,6 +240,24 @@ export const CircularTestimonials = ({
                   </motion.span>
                 ))}
               </motion.p>
+              {activeTestimonial.href && (
+                <a
+                  href={activeTestimonial.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    marginTop: "8px",
+                    padding: "10px 0",
+                    color: colorName,
+                    fontWeight: 700,
+                    textDecoration: "underline",
+                    textUnderlineOffset: "4px",
+                  }}
+                >
+                  Visitar sitio web →
+                </a>
+              )}
             </motion.div>
           </AnimatePresence>
           <div className="arrow-buttons">

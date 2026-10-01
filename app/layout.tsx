@@ -4,7 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { StickyNotification } from "@/components/layout/StickyNotification";
+import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { ContactModalProvider } from "@/lib/contact-modal";
 import { ContactModal } from "@/components/ui/ContactModal";
 
@@ -31,7 +31,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Oppi — Visibilidad digital y ventas para tu negocio",
+  title: "Oppi | Visibilidad digital y ventas para tu negocio",
   description:
     "Desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM). Oppi ayuda a tu empresa a conseguir más clientes.",
 };
@@ -47,7 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <StickyNotification />
+          <WhatsAppFloat />
           <ContactModal />
         </ContactModalProvider>
       </body>

@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/content/services";
+import { VariableFontHover } from "@/components/ui/variable-font-hover";
 
-export function ServicesMenu() {
+export function ServicesMenu({ dark = false }: { dark?: boolean }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -41,7 +42,7 @@ export function ServicesMenu() {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
   };
 
-  const isActive = pathname === "/servicios" || pathname.startsWith("/servicios/");
+  const isActive = pathname.startsWith("/servicios/");
 
   return (
     <div
@@ -58,11 +59,19 @@ export function ServicesMenu() {
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-4 text-body-sm font-medium transition-opacity hover:opacity-70 ${
-          isActive ? "text-[var(--color-amber-edge)]" : "text-[var(--color-ink-black)]"
+        className={`flex items-center gap-4 text-body-sm ${
+          isActive
+            ? "text-[var(--color-amber-edge)]"
+            : dark
+              ? "text-white"
+              : "text-[var(--color-ink-black)]"
         }`}
       >
-        Servicios
+        <VariableFontHover
+          label="Servicios"
+          fromFontVariationSettings="'wght' 500"
+          toFontVariationSettings="'wght' 700"
+        />
         <ChevronIcon open={open} />
       </button>
 
@@ -75,13 +84,6 @@ export function ServicesMenu() {
       >
         <span className="absolute -top-4 left-16 h-8 w-8 rotate-45 border-l border-t border-[var(--color-frost-gray)] bg-white" />
         <div className="relative">
-          <Link
-            href="/servicios"
-            className="block rounded-[var(--radius-icons)] px-12 py-8 text-body-sm font-semibold text-[var(--color-amber-edge)] hover:bg-[var(--color-cloud-gray)]"
-          >
-            Ver todos los servicios
-          </Link>
-          <div className="my-4 h-px bg-[var(--color-frost-gray)]" />
           {services.map((service) => (
             <Link
               key={service.href}

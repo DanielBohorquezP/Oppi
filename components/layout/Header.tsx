@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { VariableFontHover } from "@/components/ui/variable-font-hover";
 import { ServicesMenu } from "@/components/layout/ServicesMenu";
 import { services } from "@/content/services";
 
@@ -19,10 +20,12 @@ const afterServicesLinks = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  // El menú es siempre azul de marca, con texto blanco.
+  const linkColor = "text-white";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--color-frost-gray)] bg-white">
-      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-24 py-20 md:px-80">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-[var(--color-ink-black)] text-white">
+      <div className="mx-auto flex max-w-[1280px] items-center justify-between px-24 py-16 md:px-80">
         <Link href="/" className="block">
           <Image
             src="/Logo/IMG_2374.PNG"
@@ -31,7 +34,7 @@ export function Header() {
             height={120}
             priority
             unoptimized
-            className="h-32 w-auto rounded-[var(--radius-icons)]"
+            className="h-48 w-auto rounded-[var(--radius-icons)]"
           />
         </Link>
 
@@ -40,27 +43,35 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={`text-body-sm font-medium transition-opacity hover:opacity-70 ${
+              className={`text-body-sm ${
                 pathname === link.href
                   ? "text-[var(--color-amber-edge)]"
-                  : "text-[var(--color-ink-black)]"
+                  : linkColor
               }`}
             >
-              {link.label}
+              <VariableFontHover
+                label={link.label}
+                fromFontVariationSettings="'wght' 500"
+                toFontVariationSettings="'wght' 700"
+              />
             </Link>
           ))}
-          <ServicesMenu />
+          <ServicesMenu dark />
           {afterServicesLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-body-sm font-medium transition-opacity hover:opacity-70 ${
+              className={`text-body-sm ${
                 pathname === link.href
                   ? "text-[var(--color-amber-edge)]"
-                  : "text-[var(--color-ink-black)]"
+                  : linkColor
               }`}
             >
-              {link.label}
+              <VariableFontHover
+                label={link.label}
+                fromFontVariationSettings="'wght' 500"
+                toFontVariationSettings="'wght' 700"
+              />
             </Link>
           ))}
         </nav>
@@ -73,7 +84,8 @@ export function Header() {
           </div>
           <button
             className="flex h-40 w-40 items-center justify-center md:hidden"
-            aria-label="Abrir menú"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
           >
             <MenuIcon />
@@ -82,32 +94,26 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="flex flex-col gap-16 border-t border-[var(--color-frost-gray)] px-24 py-24 md:hidden">
+        <nav className="flex flex-col border-t border-white/10 px-24 py-16 md:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-body font-medium"
+              className="py-12 text-body font-medium"
             >
               {link.label}
             </Link>
           ))}
 
-          <Link
-            href="/servicios"
-            onClick={() => setOpen(false)}
-            className="text-body font-medium"
-          >
-            Servicios
-          </Link>
-          <div className="flex flex-col gap-12 border-l border-[var(--color-frost-gray)] pl-16">
+          <p className="py-12 text-body font-medium">Servicios</p>
+          <div className="flex flex-col border-l border-white/20 pl-16">
             {services.map((service) => (
               <Link
                 key={service.href}
                 href={service.href}
                 onClick={() => setOpen(false)}
-                className="text-body-sm text-[var(--color-slate)]"
+                className="py-12 text-body-sm text-[var(--color-frost-gray)]"
               >
                 {service.navLabel}
               </Link>
@@ -119,14 +125,16 @@ export function Header() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="text-body font-medium"
+              className="py-12 text-body font-medium"
             >
               {link.label}
             </Link>
           ))}
-          <Button variant="nav-outline" href="/quienes-somos#contacto">
-            Agenda una llamada
-          </Button>
+          <div className="mt-16" onClick={() => setOpen(false)}>
+            <Button variant="nav-outline" href="/quienes-somos#contacto">
+              Agenda una llamada
+            </Button>
+          </div>
         </nav>
       )}
     </header>

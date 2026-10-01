@@ -6,7 +6,7 @@ import { getAllPosts } from "@/lib/blog";
 import { Reveal } from "@/components/motion/Reveal";
 
 export const metadata: Metadata = {
-  title: "Blog — Oppi",
+  title: "Blog | Oppi",
   description:
     "Ideas prácticas sobre reputación online, desarrollo web y SEO para negocios locales.",
 };

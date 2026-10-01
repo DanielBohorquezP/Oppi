@@ -14,23 +14,23 @@
 
 @theme {
   /* Colores de marca */
-  --color-brand-yellow: #ffda00;
-  --color-amber-edge: #bfa300;
-  --color-coral-pulse: #ff643b;
-  --color-indigo-bloom: #460095;
-  --color-deep-teal: #003642;
-  --color-orchid-tint: #f3b3fe;
-  --color-sky-signal: #00b4dc;
-  --color-aubergine: #47264c;
-  --color-ink-black: #09012e;
+  --color-brand-yellow: #ffe848;
+  --color-amber-edge: #f8673e;
+  --color-coral-pulse: #f8673e;
+  --color-indigo-bloom: #040054;
+  --color-deep-teal: #040054;
+  --color-orchid-tint: #ffdf8e;
+  --color-sky-signal: #f8673e;
+  --color-aubergine: #040054;
+  --color-ink-black: #040054;
   --color-paper-white: #ffffff;
   --color-ash: #a6a6a6;
   --color-slate: #7a7a7a;
   --color-graphite: #3d3d3d;
   --color-charcoal: #333333;
   --color-frost-gray: #e0e0e0;
-  --color-cloud-gray: #f6f3ee;
-  --color-lavender-mist: #eee2ff;
+  --color-cloud-gray: #fff8e6;
+  --color-lavender-mist: #ffdf8e;
 
   /*
     Tipografía (la variable --font-comfortaa la define next/font/local en
@@ -95,8 +95,8 @@
   /* Superficies — el usuario pidió base BLANCA (no lavanda) con amarillo como segundo color principal */
   --color-page-canvas: #ffffff;
   --color-card-surface: #ffffff;
-  --color-pastel-card: #fff3cc;
-  --color-dark-brand-surface: #000000;
+  --color-pastel-card: #ffdf8e;
+  --color-dark-brand-surface: #040054;
 }
 
 :root {
@@ -182,4 +182,63 @@ button:focus-visible {
 }
 .prose-oppi strong {
   color: var(--color-ink-black);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Entrada del popup de agendamiento: escala corta desde 0.96 + fundido,
+   con salida rápida (ease-out fuerte). Reduced motion ya lo anula arriba. */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.modal-in { animation: modalIn 240ms cubic-bezier(0.23, 1, 0.32, 1) both; }
+.modal-backdrop-in { animation: backdropIn 200ms ease-out both; }
+
+@keyframes logo-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.logo-marquee-track {
+  animation: logo-marquee 40s linear infinite;
+}
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+  }
+  .logo-marquee {
+    overflow-x: auto;
+  }
+}
+
+/* VariableFontHover: el peso sube letra por letra al hacer hover/focus. */
+.vfh-letter {
+  font-variation-settings: var(--vfh-from);
+  transition: font-variation-settings 0.3s ease;
+  transition-delay: var(--vfh-delay, 0s);
+}
+a:hover .vfh-letter,
+button:hover .vfh-letter,
+a:focus-visible .vfh-letter,
+button:focus-visible .vfh-letter {
+  font-variation-settings: var(--vfh-to);
+}
+@media (prefers-reduced-motion: reduce) {
+  .vfh-letter {
+    transition: none;
+  }
 }
