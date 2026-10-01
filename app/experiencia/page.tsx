@@ -32,9 +32,9 @@ const cases = [
   {
     name: "Cyrrus Consulting Services",
     industry: "Consultoría empresarial",
-    result: "Rediseño de su estrategia digital",
+    result: "Estrategia digital rediseñada y alineada con sus redes",
     description:
-      "“Oppi rediseñó por completo nuestra estrategia digital. Replantearon desde cómo presentamos los servicios hasta la forma en que nos encuentran los clientes, y hoy nuestra presencia digital se siente nueva.”",
+      "“Oppi rediseñó por completo nuestra estrategia digital. Replantearon desde cómo presentamos los servicios hasta la forma en que nos encuentran los clientes, y alinearon la estrategia con todas nuestras redes sociales. Hoy nuestra presencia digital se siente nueva.”",
     src: "/clientes/cyrrus-consulting.png",
     href: "https://cyrruscs.com/",
   },
