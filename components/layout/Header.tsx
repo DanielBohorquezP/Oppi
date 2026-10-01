@@ -28,13 +28,13 @@ export function Header() {
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-24 py-16 md:px-80">
         <Link href="/" className="block">
           <Image
-            src="/Logo/IMG_2374.PNG"
+            src="/Logo/oppi-logo-yellow.png"
             alt="Oppi"
-            width={180}
-            height={120}
+            width={851}
+            height={359}
             priority
             unoptimized
-            className="h-48 w-auto rounded-[var(--radius-icons)]"
+            className="h-32 w-auto"
           />
         </Link>
 

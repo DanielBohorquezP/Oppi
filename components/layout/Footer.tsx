@@ -9,12 +9,12 @@ export function Footer() {
       <div className="mx-auto grid max-w-[1280px] gap-40 px-24 py-64 md:grid-cols-4 md:px-80">
         <div>
           <Image
-            src="/Logo/IMG_2374.PNG"
+            src="/Logo/oppi-logo-yellow.png"
             alt="Oppi"
-            width={180}
-            height={120}
+            width={851}
+            height={359}
             unoptimized
-            className="h-32 w-auto rounded-[var(--radius-icons)]"
+            className="h-24 w-auto"
           />
           <p className="mt-16 text-body-sm text-[var(--color-frost-gray)]">
             Ayudamos a empresas a aumentar su visibilidad digital y sus

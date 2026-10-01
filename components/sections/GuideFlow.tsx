@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState, type FormEvent, type ReactNode } from "react";
+import { Button } from "@/components/ui/Button";
 import { TeamAvatar } from "@/components/ui/TeamAvatar";
 import { team } from "@/content/team";
 import { services, type Challenge, type Service } from "@/content/guide";
@@ -95,13 +96,9 @@ export function GuideFlow({
           confirmar el horario de tu llamada.
         </p>
         {onClose && (
-          <button
-            type="button"
-            onClick={onClose}
-            className="mt-24 rounded-full bg-[var(--color-coral-pulse)] px-24 py-12 font-semibold text-white transition hover:brightness-110"
-          >
+          <Button onClick={onClose} className="mt-24">
             Cerrar
-          </button>
+          </Button>
         )}
       </div>
     );
@@ -177,14 +174,13 @@ export function GuideFlow({
               Elige el servicio que te interesa y te conectamos con la persona
               indicada del equipo.
             </p>
-            <button
-              type="button"
+            <Button
               onClick={() => setStep(1)}
               disabled={!service}
-              className="mt-24 w-full rounded-full bg-[var(--color-coral-pulse)] px-24 py-12 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+              className="mt-24 w-full"
             >
               Continuar
-            </button>
+            </Button>
           </>
         )}
 
@@ -240,13 +236,13 @@ export function GuideFlow({
               className="hidden"
               aria-hidden="true"
             />
-            <button
+            <Button
               type="submit"
               disabled={!canSubmit || sending}
-              className="mt-24 w-full rounded-full bg-[var(--color-coral-pulse)] px-24 py-12 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
+              className="mt-24 w-full"
             >
               {sending ? "Enviando..." : "Agenda una llamada"}
-            </button>
+            </Button>
             {error && (
               <p role="alert" className="mt-12 text-body-sm text-[var(--color-coral-pulse)]">
                 No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp.

@@ -144,24 +144,6 @@ button:focus-visible {
   letter-spacing: -0.028em;
 }
 
-@keyframes star-btn {
-  0% {
-    offset-distance: 0%;
-  }
-  100% {
-    offset-distance: 100%;
-  }
-}
-
-/*
-  Definida como clase plana (no como token --animate-* de @theme): Tailwind v4
-  no resuelve correctamente valores de @theme que contienen var()/calc()
-  dentro de "animate-*", así que se evita esa capa por completo.
-*/
-.animate-star-btn {
-  animation: star-btn calc(var(--duration) * 1s) linear infinite;
-}
-
 .prose-oppi h2 {
   margin-top: 40px;
   margin-bottom: 12px;
