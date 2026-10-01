@@ -16,7 +16,8 @@ const cases = [
     result: "De cero presencia digital a un nuevo canal de clientes",
     description:
       "“No tenía página web y hoy mi sitio es otro canal de atención y de adquisición de clientes. Oppi lo construyó desde cero y explica mis servicios tributarios con claridad y sin complicaciones.”",
-    src: "/clientes/claudia-ladino.png",
+    src: "/clientes/claudia-ladino-carrusel.png",
+    background: "#040054",
     href: "https://claudialadino.com/",
   },
   {
@@ -45,6 +46,7 @@ const caseTestimonials = cases.map((item) => ({
   designation: `${item.industry} · ${item.result}`,
   src: item.src,
   href: item.href,
+  background: item.background,
 }));
 
 export default function ExperienciaPage() {

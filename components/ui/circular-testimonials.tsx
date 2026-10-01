@@ -15,6 +15,7 @@ interface Testimonial {
   designation: string;
   src: string;
   href?: string;
+  background?: string;
 }
 interface Colors {
   name?: string;
@@ -185,7 +186,7 @@ export const CircularTestimonials = ({
               alt={testimonial.name}
               className="testimonial-image"
               data-index={index}
-              style={getImageStyle(index)}
+              style={{ ...getImageStyle(index), backgroundColor: testimonial.background }}
             />
           ))}
         </div>
@@ -308,8 +309,11 @@ export const CircularTestimonials = ({
           position: absolute;
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
+          box-sizing: border-box;
+          padding: 1.75rem;
           border-radius: 1.5rem;
+          background-color: #fff;
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         .testimonial-content {
