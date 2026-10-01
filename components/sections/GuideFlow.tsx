@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type FormEvent, type ReactNode } from "react";
 import { TeamAvatar } from "@/components/ui/TeamAvatar";
 import { team } from "@/content/team";
@@ -36,6 +37,8 @@ export function GuideFlow({
   const [challenge, setChallenge] = useState<Challenge | null>(null);
   const [contact, setContact] = useState<Contact>(emptyContact);
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState(false);
 
   const host = team[service?.id ?? "sem"];
   const canSubmit =
@@ -43,9 +46,39 @@ export function GuideFlow({
     contact.email.trim() !== "" &&
     contact.whatsapp.trim() !== "";
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (canSubmit) setSent(true);
+    if (!canSubmit || sending || !service || !challenge) return;
+
+    setSending(true);
+    setError(false);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `Nueva solicitud de llamada: ${contact.name}`,
+          from_name: "Oppi (sitio web)",
+          replyto: contact.email,
+          botcheck: new FormData(e.currentTarget).get("botcheck") ?? "",
+          Nombre: contact.name,
+          Email: contact.email,
+          WhatsApp: contact.whatsapp,
+          "Sitio web": contact.url || "No indicó",
+          Servicio: service.id,
+          Reto: challenge.label,
+          Especialista: host.name,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) setSent(true);
+      else setError(true);
+    } catch {
+      setError(true);
+    } finally {
+      setSending(false);
+    }
   };
 
   const set = (key: keyof Contact) => (value: string) =>
@@ -199,13 +232,33 @@ export function GuideFlow({
               <Input label="WhatsApp" type="tel" value={contact.whatsapp} onChange={set("whatsapp")} placeholder="Ej. +57 300 000 0000" autoComplete="tel" />
               <Input label="Tu sitio web (opcional)" value={contact.url} onChange={set("url")} placeholder="Ej. www.tuempresa.com" autoComplete="url" />
             </div>
+            <input
+              type="checkbox"
+              name="botcheck"
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden="true"
+            />
             <button
               type="submit"
-              disabled={!canSubmit}
+              disabled={!canSubmit || sending}
               className="mt-24 w-full rounded-full bg-[var(--color-coral-pulse)] px-24 py-12 font-semibold text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:brightness-100"
             >
-              Agenda una llamada
+              {sending ? "Enviando..." : "Agenda una llamada"}
             </button>
+            {error && (
+              <p role="alert" className="mt-12 text-body-sm text-[var(--color-coral-pulse)]">
+                No pudimos enviar tu solicitud. Intenta de nuevo o escríbenos por WhatsApp.
+              </p>
+            )}
+            <p className="mt-12 text-caption text-[var(--color-ash)]">
+              Al enviar aceptas el tratamiento de tus datos según nuestra{" "}
+              <Link href="/politica-de-privacidad" className="underline hover:text-white">
+                política de privacidad
+              </Link>
+              .
+            </p>
             <BackButton onClick={() => setStep(1)}>Elegir otro reto</BackButton>
           </form>
         )}
