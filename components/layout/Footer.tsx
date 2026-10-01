@@ -74,7 +74,10 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10 px-24 py-24 text-center text-caption text-[var(--color-ash)] md:px-80">
-        © {new Date().getFullYear()} Oppi. Todos los derechos reservados.
+        © {new Date().getFullYear()} Oppi. Todos los derechos reservados.{" "}
+        <Link href="/politica-de-privacidad" className="underline hover:text-white">
+          Política de privacidad
+        </Link>
       </div>
 
       <p

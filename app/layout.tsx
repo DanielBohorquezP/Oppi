@@ -7,6 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { ContactModalProvider } from "@/lib/contact-modal";
 import { ContactModal } from "@/components/ui/ContactModal";
+import { site } from "@/content/site";
 
 const comfortaa = localFont({
   src: "./fonts/comfortaa/Comfortaa-VariableFont_wght.ttf",
@@ -31,6 +32,14 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "./" },
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    locale: "es_CO",
+    url: "./",
+  },
   title: "Oppi | Visibilidad digital y ventas para tu negocio",
   description:
     "Desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM). Oppi ayuda a tu empresa a conseguir más clientes.",
