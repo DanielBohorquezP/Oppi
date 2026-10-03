@@ -14,7 +14,7 @@ const chartDots = [
 const kpis = [
   { value: "+65%", label: "Tráfico orgánico" },
   { value: "-32%", label: "Costo por cliente" },
-  { value: "3 sem.", label: "Para lanzar tu sitio" },
+  { value: "3 sem.", label: "Para lanzar tu estrategia" },
 ];
 
 export function GrowthChartCard({ className = "" }: { className?: string }) {
@@ -45,7 +45,7 @@ export function GrowthChartCard({ className = "" }: { className?: string }) {
           Crecimiento con Oppi
         </p>
         <p className="mt-8 max-w-[420px] text-body-sm text-[var(--color-frost-gray)]">
-          Web, SEO y SEM trabajando juntos: así se ve el resultado combinado
+          Marketing, SEO y SEM trabajando juntos: así se ve el resultado combinado
           de los tres servicios en una cuenta activa.
         </p>
 

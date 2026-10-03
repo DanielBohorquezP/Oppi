@@ -18,8 +18,8 @@ export default function Home() {
 
       <div id="servicios" className="scroll-mt-96 px-24 pt-32 md:px-80">
         <SectionHeading
-          title="Convierte tu web en tu mejor vendedor."
-          description="Te encuentran en Google y en la IA, tus anuncios rinden más y cada visita sabe qué hacer para comprarte."
+          title="Convierte tu marketing en tu mejor vendedor."
+          description="Tus campañas y contenido llegan a las personas correctas, te encuentran en Google y en la IA, y tus anuncios rinden más."
         />
       </div>
       <ServiceSummary />

@@ -17,7 +17,7 @@ export function Hero() {
             en más ventas
           </h1>
           <p className="mt-24 max-w-[440px] text-body-lg text-[var(--color-frost-gray)]">
-            Web, SEO y Google Ads trabajando juntos para que tu negocio
+            Marketing, SEO y Google Ads trabajando juntos para que tu negocio
             consiga más clientes, con resultados medibles.
           </p>
           {/* La acción principal es el formulario de la derecha; aquí solo

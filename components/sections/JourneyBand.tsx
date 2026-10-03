@@ -13,14 +13,14 @@ const steps = [
   {
     icon: PiMagnifyingGlass,
     title: "Diagnóstico",
-    description: "Revisamos tu presencia actual: web, posicionamiento orgánico y anuncios.",
+    description: "Revisamos tu presencia actual: marketing, posicionamiento orgánico y anuncios.",
     offset: "md:mt-[144px]",
     surface: "bg-white/5",
   },
   {
     icon: PiPencilRuler,
     title: "Diseño",
-    description: "Diseñamos la web, la estrategia SEO o la campaña de Ads a la medida de tu negocio.",
+    description: "Diseñamos la estrategia de marketing, el plan SEO o la campaña de Ads a la medida de tu negocio.",
     offset: "md:mt-[96px]",
     surface: "bg-white/10",
   },
