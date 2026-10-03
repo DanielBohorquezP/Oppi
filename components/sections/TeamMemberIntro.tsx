@@ -20,7 +20,7 @@ const themes: Record<
   }
 > = {
   // Cada persona tiene su color: Angeline amarillo, Daniel azul, Juanse naranja.
-  "desarrollo-web": {
+  marketing: {
     surface: "bg-[var(--color-brand-yellow)]",
     text: "text-[var(--color-ink-black)]",
     body: "text-[var(--color-ink-black)]",
@@ -50,7 +50,7 @@ const themes: Record<
 };
 
 export function TeamMemberIntro({ member }: { member: TeamMember }) {
-  const theme = themes[member.key] ?? themes["desarrollo-web"];
+  const theme = themes[member.key] ?? themes.marketing;
 
   return (
     <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">

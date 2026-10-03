@@ -56,7 +56,7 @@ export default function QuienesSomosPage() {
               Trabajamos con negocios locales, clínicas, restaurantes y
               empresas de servicios que saben que su producto es bueno, pero
               que no logran que suficientes personas lo encuentren o confíen
-              en él online. Combinamos desarrollo web, posicionamiento
+              en él online. Combinamos marketing digital, posicionamiento
               orgánico (SEO) y campañas de pauta digital (SEM) para resolver
               ese problema de punta a punta.
             </p>

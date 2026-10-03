@@ -8,12 +8,12 @@ export type TeamMember = {
   photoSrc?: string;
 };
 
-export const team: Record<"desarrollo-web" | "seo" | "sem", TeamMember> = {
-  "desarrollo-web": {
-    key: "desarrollo-web",
+export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
+  marketing: {
+    key: "marketing",
     name: "Angeline Martínez",
-    role: "Desarrollo Web",
-    blurb: "Diseña y construye cada sitio de Oppi, cuidando que cargue rápido y convierta.",
+    role: "Marketing Digital",
+    blurb: "Lidera la estrategia de marketing: campañas en Meta Ads, contenido y posicionamiento de marca de cada cuenta.",
     accent: "var(--color-brand-yellow)",
     photoSrc: "/Integrantes/Angie.png",
   },

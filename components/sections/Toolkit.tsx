@@ -15,12 +15,12 @@ import { team } from "@/content/team";
 const items = [
   {
     icon: PiMonitor,
-    title: "Desarrollo web optimizado",
-    description: "Sitios rápidos, claros y enfocados en convertir visitas en clientes.",
+    title: "Marketing digital y Meta Ads",
+    description: "Auditoría, campañas en Meta Ads y contenido que conecta con tu cliente ideal.",
     surface: "bg-[var(--color-brand-yellow)] text-[var(--color-ink-black)]",
     body: "text-[var(--color-ink-black)]",
     chip: "bg-[var(--color-ink-black)] text-[var(--color-brand-yellow)]",
-    member: team["desarrollo-web"],
+    member: team.marketing,
     avatarAccent: "var(--color-ink-black)",
     scrim: "var(--color-brand-yellow)",
   },

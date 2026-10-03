@@ -14,14 +14,14 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    key: "desarrollo-web",
-    href: "/servicios/desarrollo-web",
-    navLabel: "Desarrollo Web",
-    menuDescription: "Sitios rápidos y enfocados en conversión.",
-    tag: "Desarrollo",
-    title: "Web optimizada para ventas",
+    key: "marketing",
+    href: "/servicios/marketing",
+    navLabel: "Marketing Digital",
+    menuDescription: "Meta Ads, contenido y estrategia de marca.",
+    tag: "Marketing",
+    title: "Marketing que se mide en ventas",
     summary:
-      "Sitios rápidos, claros y pensados para convertir visitas en clientes, no solo para verse bien.",
+      "Auditoría, Meta Ads, contenido y posicionamiento digital para que tu inversión se convierta en clientes.",
     wash: "yellow",
     accentVar: "var(--color-brand-yellow)",
   },

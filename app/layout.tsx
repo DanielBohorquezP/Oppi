@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   },
   title: "Oppi | Visibilidad digital y ventas para tu negocio",
   description:
-    "Desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM). Oppi ayuda a tu empresa a conseguir más clientes.",
+    "Marketing digital, estrategia SEO y campañas de Google Ads (SEM) y Meta Ads. Oppi ayuda a tu empresa a conseguir más clientes.",
 };
 
 const organizationSchema = {
@@ -55,7 +55,7 @@ const organizationSchema = {
   logo: `${site.url}/icon.png`,
   image: `${site.url}/icon.png`,
   description:
-    "Agencia de marketing digital: desarrollo web optimizado para ventas, estrategia SEO y campañas de Google Ads (SEM) para empresas.",
+    "Agencia de marketing digital: estrategia de marketing y Meta Ads, estrategia SEO y campañas de Google Ads (SEM) para empresas.",
   telephone: `+${site.whatsappNumber}`,
   address: {
     "@type": "PostalAddress",
@@ -64,6 +64,8 @@ const organizationSchema = {
   },
   areaServed: { "@type": "Country", name: "Colombia" },
   knowsAbout: [
+    "Marketing digital",
+    "Meta Ads",
     "Desarrollo web",
     "SEO",
     "Google Ads",

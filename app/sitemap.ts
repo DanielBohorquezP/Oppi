@@ -5,7 +5,7 @@ import { site } from "@/content/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const pages = [
     "",
-    "/servicios/desarrollo-web",
+    "/servicios/marketing",
     "/servicios/seo",
     "/servicios/sem",
     "/experiencia",

@@ -5,7 +5,7 @@ import { team } from "@/content/team";
 
 // El acento de SEO es el mismo índigo del fondo de la tarjeta; aquí se usa
 // amarillo para que el placeholder y el rol sean visibles.
-const members = [team["desarrollo-web"], team.seo, team.sem].map((m) => ({
+const members = [team.marketing, team.seo, team.sem].map((m) => ({
   ...m,
   accent:
     m.accent === "var(--color-indigo-bloom)"

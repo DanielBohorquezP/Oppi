@@ -59,6 +59,11 @@ const faqs = [
     answer:
       "No necesariamente. Podemos trabajar sobre tu sitio actual; si detectamos limitaciones técnicas serias, te lo decimos como parte de la auditoría inicial.",
   },
+  {
+    question: "¿Y si mi sitio necesita rediseño o uno nuevo?",
+    answer:
+      "Si la auditoría muestra que tu web frena el SEO (es lenta, se ve desactualizada o no existe), podemos desarrollarla como complemento de la estrategia, pensada desde el inicio para posicionar y convertir.",
+  },
 ];
 
 export default function SeoPage() {
@@ -116,6 +121,34 @@ export default function SeoPage() {
               buscan tus clientes.
             </p>
           </PastelCard>
+        </Reveal>
+      </section>
+
+      <section id="desarrollo-web" className="px-24 pb-64 md:px-80">
+        <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 bg-white p-32 shadow-[var(--shadow-subtle)] md:p-48">
+          <p className="text-body-sm font-semibold uppercase tracking-wide text-[var(--color-graphite)]">
+            Desarrollo web
+          </p>
+          <h2 className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-ink-black)]">
+            ¿Tu web necesita un rediseño o aún no tienes una? También la hacemos
+          </h2>
+          <p className="mt-12 max-w-[720px] text-body text-[var(--color-graphite)]">
+            El SEO rinde más sobre un sitio rápido, claro y bien estructurado.
+            Si en la auditoría vemos que tu web limita el posicionamiento,
+            podemos rediseñarla o construirla desde cero como parte de la
+            estrategia.
+          </p>
+          <ul className="mt-24 grid gap-12 text-body-sm font-medium text-[var(--color-ink-black)] md:grid-cols-3">
+            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
+              Sitios rápidos y mobile-first
+            </li>
+            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
+              Estructura y schema listos para SEO
+            </li>
+            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
+              Integración con WhatsApp, formularios y analítica
+            </li>
+          </ul>
         </Reveal>
       </section>
 

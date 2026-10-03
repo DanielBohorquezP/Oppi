@@ -12,23 +12,23 @@ export type Service = {
 
 export const services: Service[] = [
   {
-    id: "desarrollo-web",
-    question: "¿Qué pasa hoy con tu web?",
+    id: "marketing",
+    question: "¿Cómo va tu marketing hoy?",
     challenges: [
       {
-        label: "Mi página no carga o es muy lenta",
+        label: "Invierto en marketing pero no sé qué funciona",
         pitch:
-          "Revisemos qué la hace lenta. Casi siempre son pocas cosas y el cambio se nota en ventas desde la primera semana.",
+          "Hagamos una auditoría de tus campañas y canales para ver dónde se está yendo el dinero y qué ajustar primero.",
       },
       {
-        label: "Todavía no tengo página web",
+        label: "Mis anuncios en Meta no me traen clientes",
         pitch:
-          "Armemos una web pensada para vender desde el día uno, sin plantillas y lista para que te encuentren en Google.",
+          "Revisemos segmentación, mensajes y costo por resultado de tus campañas en Facebook e Instagram para volverlas rentables.",
       },
       {
-        label: "Quiero actualizarla, se ve vieja",
+        label: "No sé qué publicar en mis redes",
         pitch:
-          "Te muestro qué conservar y qué rediseñar para que tu web se vea actual sin perder lo que ya te funciona.",
+          "Armemos Reels y posts a partir de los dolores y preguntas de tu cliente ideal, conectados con tu propuesta de valor.",
       },
     ],
   },
@@ -45,6 +45,11 @@ export const services: Service[] = [
         label: "Mi página no tiene tráfico",
         pitch:
           "Armemos un plan de contenido sobre lo que tu cliente ya está buscando para empezar a atraer visitas reales.",
+      },
+      {
+        label: "No tengo página web",
+        pitch:
+          "Armemos una web pensada desde el inicio para posicionar en Google y convertir visitas en clientes, junto con la estrategia SEO.",
       },
       {
         label: "No aparezco en Google",
