@@ -30,11 +30,7 @@ export function TeamAvatar({
         height={height}
         priority
         className="object-contain"
-        style={{
-          height,
-          width: "auto",
-          filter: "drop-shadow(0 24px 24px rgba(0,0,0,0.25))",
-        }}
+        style={{ height, width: "auto" }}
       />
     );
   }

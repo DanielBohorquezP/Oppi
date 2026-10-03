@@ -99,12 +99,22 @@ export function Toolkit() {
                   <Icon size={24} aria-hidden="true" />
                 </span>
                 {/* Móvil y tablet: la figura queda en el flujo, sobre el texto. */}
-                <span className="flex flex-1 items-center justify-center py-16 xl:hidden">
+                <span className="relative -mb-24 flex flex-1 items-end justify-center pt-8 xl:hidden">
                   {item.member ? (
-                    <TeamAvatar
-                      member={{ ...item.member, accent: item.avatarAccent }}
-                      height={160}
-                    />
+                    <>
+                      <TeamAvatar
+                        member={{ ...item.member, accent: item.avatarAccent }}
+                        height={280}
+                      />
+                      {/* Desvanecido hacia el color del panel para que el título se lea. */}
+                      <span
+                        aria-hidden="true"
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3"
+                        style={{
+                          background: `linear-gradient(to top, ${item.scrim} 15%, transparent)`,
+                        }}
+                      />
+                    </>
                   ) : (
                     <Icon
                       aria-hidden="true"
@@ -120,13 +130,13 @@ export function Toolkit() {
                   style={{
                     left: isActive ? "calc(100% - 16px)" : "50%",
                     bottom: isActive ? 0 : 130,
-                    transform: `translateX(${isActive ? "-100%" : "-50%"}) scale(${isActive ? 1 : 0.625})`,
+                    transform: `translateX(${isActive ? "-100%" : "-50%"}) scale(${isActive ? 1 : 0.55})`,
                   }}
                 >
                   {item.member ? (
                     <TeamAvatar
                       member={{ ...item.member, accent: item.avatarAccent }}
-                      height={320}
+                      height={400}
                     />
                   ) : (
                     <Icon className="h-[256px] w-[256px] opacity-20" />

@@ -15,6 +15,7 @@ export const team: Record<"desarrollo-web" | "seo" | "sem", TeamMember> = {
     role: "Desarrollo Web",
     blurb: "Diseña y construye cada sitio de Oppi, cuidando que cargue rápido y convierta.",
     accent: "var(--color-brand-yellow)",
+    photoSrc: "/Integrantes/Angie.png",
   },
   seo: {
     key: "seo",
@@ -22,6 +23,7 @@ export const team: Record<"desarrollo-web" | "seo" | "sem", TeamMember> = {
     role: "Estrategia SEO",
     blurb: "Lleva la estrategia de contenido y posicionamiento orgánico de cada cuenta.",
     accent: "var(--color-indigo-bloom)",
+    photoSrc: "/Integrantes/Daniel.png",
   },
   sem: {
     key: "sem",
