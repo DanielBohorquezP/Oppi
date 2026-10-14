@@ -1,44 +1,84 @@
 import type { Metadata } from "next";
+import {
+  PiArticle,
+  PiLightning,
+  PiMagnifyingGlass,
+  PiMapPin,
+  PiSparkle,
+  PiWhatsappLogo,
+  PiWrench,
+} from "react-icons/pi";
 import { ServiceIntro } from "@/components/sections/ServiceIntro";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { IncludeGrid, type IncludeItem } from "@/components/sections/IncludeGrid";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { Faq } from "@/components/sections/Faq";
-import { PastelCard } from "@/components/ui/PastelCard";
+import { Faq, type QA } from "@/components/sections/Faq";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { Reveal } from "@/components/motion/Reveal";
 import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Estrategia SEO para visibilidad y ventas orgánicas | Oppi",
+  title: "Agencia SEO en Barranquilla: aparece primero en Google y en la IA | Oppi",
   description:
-    "Trabajamos la estructura técnica, el contenido y las señales de autoridad de tu sitio para que aparezcas primero cuando tus clientes buscan lo que ofreces.",
+    "Tus clientes te buscan en Google. Posicionamos tu negocio para que te encuentren a ti y no a tu competencia, también en ChatGPT, Claude, Perplexity y Gemini.",
 };
 
-const steps = [
+const includes: IncludeItem[] = [
   {
-    title: "Auditoría inicial",
-    description:
-      "Revisamos la salud técnica, el contenido y la competencia de tu sitio en buscadores.",
+    icon: PiWrench,
+    accent: "yellow",
+    title: "Arreglamos lo que te esconde",
+    text: "Revisamos velocidad y estructura de tu sitio para que Google pueda encontrarte y mostrarte.",
   },
   {
-    title: "Plan de acción",
-    description:
-      "Priorizamos las mejoras con mayor impacto: velocidad, estructura, contenido y autoridad.",
+    icon: PiArticle,
+    accent: "coral",
+    title: "Respondemos lo que tu cliente busca",
+    text: "Contenido sobre las preguntas reales de tus clientes, publicado mes a mes.",
   },
   {
-    title: "Ejecución mensual",
-    description:
-      "Optimizamos on-page, publicamos contenido y ajustamos según los resultados de cada mes.",
+    icon: PiMapPin,
+    accent: "ink",
+    title: "Te eligen los que están cerca",
+    text: "Tu ficha de Google bien hecha para que te encuentre quien busca en tu zona.",
   },
   {
-    title: "Reportes claros",
-    description:
-      "Recibes un reporte mensual con posiciones, tráfico y próximos pasos, sin tecnicismos.",
+    icon: PiSparkle,
+    accent: "slate",
+    title: "La IA te recomienda",
+    text: "Preparamos tu contenido para que ChatGPT, Claude, Perplexity y Gemini te recomienden cuando preguntan por lo que vendes.",
   },
 ];
 
-const faqs = [
+const webPerks = [
+  { icon: PiLightning, label: "Rápida y pensada para celular" },
+  { icon: PiMagnifyingGlass, label: "Lista para aparecer en Google" },
+  { icon: PiWhatsappLogo, label: "Conectada a WhatsApp y formularios" },
+];
+
+const steps = [
+  {
+    title: "Diagnóstico",
+    description:
+      "Te mostramos por qué hoy Google no te muestra y quién se está quedando con tus clientes.",
+  },
+  {
+    title: "Plan",
+    description: "Atacamos primero lo que más rápido te hace aparecer.",
+  },
+  {
+    title: "Trabajo mensual",
+    description:
+      "Mejoramos tu página y publicamos contenido cada mes, ajustando según lo que funciona.",
+  },
+  {
+    title: "Reporte claro",
+    description:
+      "Cada mes ves cuántas personas te encontraron y cuántas se volvieron clientes.",
+  },
+];
+
+const faqs: QA[] = [
   {
     question: "¿En cuánto tiempo veo resultados?",
     answer:
@@ -48,6 +88,11 @@ const faqs = [
     question: "¿Qué incluye la estrategia mensual?",
     answer:
       "Optimización on-page, estructura de datos (schema), estrategia de contenidos, señales de SEO local si aplica, y un reporte mensual de posiciones y tráfico.",
+  },
+  {
+    question: "¿Qué es la visibilidad en IA (GEO)?",
+    answer:
+      "Estructuramos tu contenido para que ChatGPT, Claude, Perplexity, Gemini y Copilot lo puedan leer y citar como fuente, no solo Google.",
   },
   {
     question: "¿Funciona para negocios locales?",
@@ -71,119 +116,53 @@ export default function SeoPage() {
     <>
       <ServiceIntro
         serviceId="seo"
-        eyebrow="Crecimiento orgánico"
-        title="Que te encuentren cuando buscan lo que ofreces"
-        description="Trabajamos la estructura técnica, el contenido y las señales de autoridad de tu sitio para posicionarte donde tus clientes ya están buscando."
-        ctaHref="/quienes-somos#contacto"
-        ctaLabel="Solicita una auditoría"
+        eyebrow="Estrategia SEO en Barranquilla"
+        title="Tus clientes te buscan en Google. Hoy encuentran a tu competencia."
+        highlight="tu competencia"
+        description="Posicionamos tu página para que, cuando alguien busque lo que vendes en Google o le pregunte a una IA como ChatGPT, Claude o Perplexity, tu negocio sea la primera opción. Clientes que llegan solos, mes a mes."
+        ctaLabel="Descubre por qué no apareces"
       />
+
+      <IncludeGrid title="Todo lo que hace falta para que Google te elija a ti" items={includes}>
+        <div
+          id="desarrollo-web"
+          className="mt-24 flex scroll-mt-96 flex-wrap items-center gap-x-48 gap-y-32 rounded-[var(--radius-cards)] bg-[var(--color-cloud-gray)] p-[28px] md:p-48"
+        >
+          <div className="flex-[1_1_360px]">
+            <Eyebrow tone="graphite" className="mb-8">
+              Desarrollo web
+            </Eyebrow>
+            <h2 className="tracking-heading text-heading font-semibold text-balance text-[var(--color-ink-black)]">
+              ¿Tu página espanta clientes?
+            </h2>
+            <p className="mt-12 max-w-[480px] text-body-lg text-[var(--color-graphite)]">
+              Te hacemos una que aparece en Google y convierte visitas en ventas.
+            </p>
+          </div>
+          <ul className="flex flex-[1_1_320px] flex-col gap-12">
+            {webPerks.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-12 rounded-[16px] bg-white px-16 py-[14px] font-semibold text-[var(--color-ink-black)]"
+              >
+                <Icon size={20} aria-hidden="true" className="shrink-0 text-[var(--color-coral-pulse)]" />
+                {label}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </IncludeGrid>
 
       <TeamMemberIntro member={team.seo} />
 
-      <section className="px-24 py-64 md:px-80">
-        <SectionHeading eyebrow="Qué incluye" title="Una estrategia completa, no solo palabras clave" />
-        <Reveal className="mx-auto mt-40 grid max-w-[1280px] gap-24 md:grid-cols-2 lg:grid-cols-4">
-          <PastelCard wash="yellow">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Auditoría técnica
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Velocidad, indexación y estructura de tu sitio, sin puntos
-              ciegos.
-            </p>
-          </PastelCard>
-          <PastelCard wash="sky">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Contenido con intención
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Contenido que responde lo que tus clientes realmente buscan,
-              mes a mes.
-            </p>
-          </PastelCard>
-          <PastelCard wash="lilac">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              SEO local y schema
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Datos estructurados y consistencia de tu ficha de Google para
-              búsquedas cercanas.
-            </p>
-          </PastelCard>
-          <PastelCard wash="peach">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Visibilidad en IA (GEO)
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Estructuramos tu contenido para que ChatGPT, Gemini y Copilot
-              lo puedan leer y citar como fuente, no solo Google. Con 900M+
-              de usuarios semanales en ChatGPT (OpenAI, 2026), es donde ya
-              buscan tus clientes.
-            </p>
-          </PastelCard>
-        </Reveal>
-      </section>
+      <ProcessSteps title="Cómo trabajamos mes a mes" steps={steps} />
 
-      <section id="desarrollo-web" className="px-24 pb-64 md:px-80">
-        <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 bg-white p-32 shadow-[var(--shadow-subtle)] md:p-48">
-          <p className="text-body-sm font-semibold uppercase tracking-wide text-[var(--color-graphite)]">
-            Desarrollo web
-          </p>
-          <h2 className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-ink-black)]">
-            ¿Tu web necesita un rediseño o aún no tienes una? También la hacemos
-          </h2>
-          <p className="mt-12 max-w-[720px] text-body text-[var(--color-graphite)]">
-            El SEO rinde más sobre un sitio rápido, claro y bien estructurado.
-            Si en la auditoría vemos que tu web limita el posicionamiento,
-            podemos rediseñarla o construirla desde cero como parte de la
-            estrategia.
-          </p>
-          <ul className="mt-24 grid gap-12 text-body-sm font-medium text-[var(--color-ink-black)] md:grid-cols-3">
-            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
-              Sitios rápidos y mobile-first
-            </li>
-            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
-              Estructura y schema listos para SEO
-            </li>
-            <li className="rounded-[var(--radius-cards-sm)] bg-[var(--color-cloud-gray)] p-16">
-              Integración con WhatsApp, formularios y analítica
-            </li>
-          </ul>
-        </Reveal>
-      </section>
-
-      <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">
-        <SectionHeading eyebrow="Nuestro proceso" title="Cómo trabajamos mes a mes" />
-        <div className="mt-40">
-          <ProcessSteps steps={steps} />
-        </div>
-      </section>
-
-      <section className="px-24 py-64 md:px-80">
-        <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 border-t-4 border-t-[var(--color-indigo-bloom)] bg-white p-32 text-center shadow-[var(--shadow-subtle)] md:p-48">
-          <p className="text-body-sm font-semibold text-[var(--color-charcoal)]">
-            Lo que ves cada mes
-          </p>
-          <p className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-ink-black)]">
-            Un reporte claro
-          </p>
-          <p className="mx-auto mt-8 max-w-[560px] text-body text-[var(--color-graphite)]">
-            Tráfico orgánico, posiciones y consultas que llegan desde Google y
-            la IA, explicados sin tecnicismos.
-          </p>
-        </Reveal>
-      </section>
-
-      <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">
-        <SectionHeading eyebrow="Preguntas frecuentes" title="Todo lo que debes saber" />
-        <div className="mt-40">
-          <Faq items={faqs} />
-        </div>
-      </section>
+      <Faq items={faqs} />
 
       <CtaBand
-        title="Empecemos con una auditoría gratuita"
-        description="Te mostramos exactamente qué está frenando tu visibilidad en Google."
+        ctaHref="#contacto"
+        title="¿Por qué tu competencia aparece y tú no?"
+        description="Te lo mostramos gratis revisando tu sitio."
       />
     </>
   );

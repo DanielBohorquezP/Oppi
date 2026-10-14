@@ -15,10 +15,12 @@ import { team } from "@/content/team";
 const items = [
   {
     icon: PiMonitor,
-    title: "Marketing digital y Meta Ads",
-    description: "Auditoría, campañas en Meta Ads y contenido que conecta con tu cliente ideal.",
+    owner: "Angeline · Marketing Digital",
+    title: "Redes que traen clientes",
+    description: "Sabes qué publicar, a quién y cuánto invertir para que tus redes traigan clientes.",
     surface: "bg-[var(--color-brand-yellow)] text-[var(--color-ink-black)]",
     body: "text-[var(--color-ink-black)]",
+    ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-[var(--color-brand-yellow)]",
     member: team.marketing,
     avatarAccent: "var(--color-ink-black)",
@@ -26,11 +28,12 @@ const items = [
   },
   {
     icon: PiMagnifyingGlass,
-    title: "Estrategia SEO",
-    description:
-      "Contenido y estructura técnica para que te encuentren en Google y en respuestas de ChatGPT, Gemini y otras IA.",
+    owner: "Daniel · Estrategia SEO",
+    title: "Apareces tú primero",
+    description: "Cuando te buscan en Google o le preguntan a ChatGPT, Claude o Perplexity, apareces tú.",
     surface: "bg-[var(--color-ink-black)] text-white",
     body: "text-[var(--color-frost-gray)]",
+    ownerClass: "text-[var(--color-brand-yellow)]",
     chip: "bg-white/10 text-white",
     member: team.seo,
     avatarAccent: "#ffffff",
@@ -38,11 +41,12 @@ const items = [
   },
   {
     icon: PiCrosshair,
-    title: "Google Ads gestionado",
-    description:
-      "Campañas de búsqueda y remarketing optimizadas cada semana, no una vez y listo.",
+    owner: "Juan Sebastián · Google Ads",
+    title: "Ni un peso perdido",
+    description: "Tus anuncios se revisan cada semana para que no se pierda ni un peso.",
     surface: "bg-[var(--color-coral-pulse)] text-[var(--color-ink-black)]",
     body: "text-[var(--color-ink-black)]",
+    ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-white",
     member: team.sem,
     avatarAccent: "var(--color-ink-black)",
@@ -50,11 +54,12 @@ const items = [
   },
   {
     icon: PiChartBar,
-    title: "Reportes mensuales",
-    description:
-      "Resultados claros de tráfico, conversión y costo por cliente, sin tecnicismos.",
+    owner: "Todo el equipo · Reportes",
+    title: "Sabes en qué se fue tu dinero",
+    description: "Cada mes sabes en qué se fue tu dinero y cuántos clientes te trajo.",
     surface: "bg-white text-[var(--color-ink-black)] border border-black/10",
     body: "text-[var(--color-graphite)]",
+    ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-white",
     member: null,
     avatarAccent: "var(--color-ink-black)",
@@ -73,9 +78,15 @@ export function Toolkit() {
   return (
     <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80 md:py-96">
       <Reveal className="mx-auto max-w-[1280px]">
-        <h2 className="tracking-heading max-w-[640px] text-heading font-semibold text-[var(--color-ink-black)] md:text-heading-lg">
-          Tu kit completo para vender más
-        </h2>
+        <div className="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
+          <h2 className="tracking-heading max-w-[640px] text-heading font-semibold text-balance text-[var(--color-ink-black)] md:text-heading-lg">
+            Todo para que te encuentren, te elijan y te compren
+          </h2>
+          <p className="max-w-[340px] text-body text-[var(--color-graphite)]">
+            Un equipo pequeño, una persona a cargo de cada frente. Sabes con
+            quién hablas.
+          </p>
+        </div>
         <div
           className="mt-40 grid gap-16 md:grid-cols-2 xl:min-h-[460px] xl:[grid-template-columns:var(--cols)] xl:transition-[grid-template-columns] xl:duration-500 xl:ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none"
           style={{ "--cols": columns } as CSSProperties}
@@ -155,6 +166,11 @@ export function Toolkit() {
                   }}
                 />
                 <span className="relative z-10 block">
+                  <span
+                    className={`mb-8 block text-caption font-semibold uppercase tracking-wide ${item.ownerClass}`}
+                  >
+                    {item.owner}
+                  </span>
                   <span className="block text-subheading font-semibold text-balance">
                     {item.title}
                   </span>

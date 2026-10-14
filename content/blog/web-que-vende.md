@@ -3,6 +3,9 @@ title: "Tu web no necesita más diseño, necesita vender más"
 excerpt: "Muchos sitios web se ven bien pero no convierten. Estas son las 4 cosas que revisamos antes de rediseñar cualquier página."
 date: "2026-05-18"
 tag: "Desarrollo web"
+pain: "Mi web se ve bien, pero no me trae clientes."
+icon: "browser"
+surface: "yellow"
 ---
 
 Es fácil confundir "bonito" con "efectivo". Un sitio puede tener animaciones increíbles y fotos profesionales y aun así generar cero clientes nuevos. Antes de rediseñar cualquier sitio, en Oppi revisamos cuatro cosas.

@@ -12,6 +12,12 @@ export type PostMeta = {
   excerpt: string;
   date: string;
   tag: string;
+  /** Frase del cliente que responde el artículo (tarjeta del listado). */
+  pain?: string;
+  /** Clave del icono de la tarjeta (ver app/blog/page.tsx). */
+  icon?: string;
+  /** Color del bloque superior de la tarjeta: "yellow" | "ink" | "coral". */
+  surface?: string;
 };
 
 export function getAllPosts(): PostMeta[] {
@@ -31,6 +37,9 @@ export function getAllPosts(): PostMeta[] {
         excerpt: data.excerpt as string,
         date: data.date as string,
         tag: data.tag as string,
+        pain: data.pain as string | undefined,
+        icon: data.icon as string | undefined,
+        surface: data.surface as string | undefined,
       };
     });
 
@@ -53,4 +62,14 @@ export async function getPostBySlug(slug: string) {
     tag: data.tag as string,
     contentHtml: processed.toString(),
   };
+}
+
+/** Fecha del post en español de Colombia. Las fechas del frontmatter son días sin hora, así que se leen en UTC para no correrse un día. */
+export function formatPostDate(date: string) {
+  return new Date(date).toLocaleDateString("es-CO", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    timeZone: "UTC",
+  });
 }

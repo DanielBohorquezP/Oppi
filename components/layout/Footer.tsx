@@ -17,8 +17,7 @@ export function Footer() {
             className="h-24 w-auto"
           />
           <p className="mt-16 text-body-sm text-[var(--color-frost-gray)]">
-            Ayudamos a empresas a aumentar su visibilidad digital y sus
-            ventas.
+            Te ayudamos a que te encuentren, te elijan y te compren.
           </p>
         </div>
 

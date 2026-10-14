@@ -1,44 +1,64 @@
 import type { Metadata } from "next";
+import { PiArrowUUpLeft, PiCalendarCheck, PiMagnifyingGlass } from "react-icons/pi";
 import { ServiceIntro } from "@/components/sections/ServiceIntro";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { IncludeGrid, type IncludeItem } from "@/components/sections/IncludeGrid";
 import { ProcessSteps } from "@/components/sections/ProcessSteps";
-import { Faq } from "@/components/sections/Faq";
-import { PastelCard } from "@/components/ui/PastelCard";
+import { Faq, type QA } from "@/components/sections/Faq";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { Reveal } from "@/components/motion/Reveal";
 import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Google Ads y SEM que generan clientes hoy | Oppi",
+  title: "Google Ads en Barranquilla: deja de pagar clics que no compran | Oppi",
   description:
-    "Gestionamos campañas de búsqueda, display y remarketing en Google Ads con optimización continua para bajar tu costo por cliente y generar ventas mientras el SEO madura.",
+    "Campañas de Google Ads gestionadas cada semana para que pagues por clientes, no por curiosos. Te mostramos cuánto presupuesto estás perdiendo.",
 };
 
-const steps = [
+const includes: IncludeItem[] = [
   {
-    title: "Auditoría de cuenta",
-    description:
-      "Revisamos tu cuenta actual (o tu mercado, si empiezas de cero) para detectar dónde se está perdiendo presupuesto.",
+    icon: PiMagnifyingGlass,
+    accent: "coral",
+    title: "Apareces cuando van a comprar",
+    text: "Tu anuncio sale arriba justo cuando alguien busca lo que vendes. Pagas por gente con intención, no por curiosos.",
   },
   {
-    title: "Estructura de campañas",
-    description:
-      "Organizamos campañas y grupos de anuncios por intención de búsqueda, con seguimiento de conversiones desde el día uno.",
+    icon: PiArrowUUpLeft,
+    accent: "yellow",
+    title: "Recuperas a los que se fueron",
+    text: "Volvemos a mostrarle tu negocio a quien visitó tu página y no compró.",
   },
   {
-    title: "Lanzamiento y calibración",
-    description:
-      "Lanzamos con presupuesto controlado y ajustamos pujas y segmentación en las primeras semanas.",
-  },
-  {
-    title: "Optimización mensual",
-    description:
-      "Reportamos ROAS, CPA y CTR cada mes y reasignamos presupuesto hacia lo que mejor convierte.",
+    icon: PiCalendarCheck,
+    accent: "ink",
+    title: "Revisión cada semana",
+    text: "Cortamos palabras y anuncios que gastan sin vender. Nada en piloto automático.",
   },
 ];
 
-const faqs = [
+const steps = [
+  {
+    title: "Revisión de tu cuenta",
+    description:
+      "Encontramos dónde se está yendo tu presupuesto (o estudiamos tu mercado si empiezas de cero).",
+  },
+  {
+    title: "Campañas ordenadas",
+    description:
+      "Organizamos tus anuncios según lo que la gente busca y medimos cada contacto desde el día uno.",
+  },
+  {
+    title: "Lanzamiento con control",
+    description:
+      "Arrancamos con presupuesto controlado y ajustamos en las primeras semanas.",
+  },
+  {
+    title: "Resultados",
+    description:
+      "Te mostramos cuánto invertiste, cuántos clientes llegaron y cuánto te costó cada uno.",
+  },
+];
+
+const faqs: QA[] = [
   {
     question: "¿Cuánto presupuesto de anuncios necesito para empezar?",
     answer:
@@ -57,7 +77,12 @@ const faqs = [
   {
     question: "¿Cómo miden si la campaña está funcionando?",
     answer:
-      "Con seguimiento de conversiones configurado desde el inicio: llamadas, formularios o compras. Cada reporte mensual muestra CPA, ROAS y CTR, no solo clics.",
+      "Con seguimiento de conversiones configurado desde el inicio: llamadas, formularios o compras. Cada reporte mensual muestra CPA (costo por cliente), ROAS (retorno por peso invertido) y CTR (porcentaje de clics), no solo clics.",
+  },
+  {
+    question: "¿Qué incluye la gestión?",
+    answer:
+      "Campañas de búsqueda, display y remarketing; ajuste semanal de pujas, palabras clave negativas y creatividades.",
   },
 ];
 
@@ -66,83 +91,25 @@ export default function SemPage() {
     <>
       <ServiceIntro
         serviceId="sem"
-        eyebrow="Resultados inmediatos"
-        title="Clientes nuevos mientras tu SEO todavía está creciendo"
-        description="Diseñamos y gestionamos campañas de Google Ads (búsqueda, display y remarketing) enfocadas en un solo objetivo: bajar tu costo por cliente y llenar tu agenda o tu carrito, no solo generar clics."
-        ctaHref="/quienes-somos#contacto"
-        ctaLabel="Agenda una auditoría de cuenta"
+        eyebrow="Google Ads (SEM)"
+        title="Deja de pagar clics que no te compran"
+        highlight="no te compran"
+        description="Ponemos tu negocio arriba en Google justo cuando alguien está buscando lo que vendes, y cada semana cortamos lo que gasta sin vender. Pagas por clientes, no por curiosos."
+        ctaLabel="Descubre cuánto presupuesto estás perdiendo"
       />
+
+      <IncludeGrid title="Cada peso trabajando, ninguno desperdiciado" items={includes} />
 
       <TeamMemberIntro member={team.sem} />
 
-      <section className="px-24 py-64 md:px-80">
-        <SectionHeading
-          eyebrow="Qué incluye"
-          title="Campañas gestionadas, no piloto automático"
-        />
-        <Reveal className="mx-auto mt-40 grid max-w-[1280px] gap-24 md:grid-cols-3">
-          <PastelCard wash="peach">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Campañas de búsqueda
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Apareces primero cuando alguien busca exactamente lo que
-              ofreces, pagando solo por clics con intención real de compra.
-            </p>
-          </PastelCard>
-          <PastelCard wash="sky">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Remarketing inteligente
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Volvemos a impactar a quienes visitaron tu sitio sin convertir,
-              con anuncios de display en el momento correcto.
-            </p>
-          </PastelCard>
-          <PastelCard wash="lilac">
-            <h3 className="text-body font-semibold text-[var(--color-ink-black)]">
-              Optimización continua
-            </h3>
-            <p className="mt-8 text-body-sm text-[var(--color-graphite)]">
-              Ajustamos pujas, palabras clave negativas y creatividades cada
-              semana: nada se deja en piloto automático.
-            </p>
-          </PastelCard>
-        </Reveal>
-      </section>
+      <ProcessSteps title="Cómo trabajamos mes a mes" steps={steps} />
 
-      <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">
-        <SectionHeading eyebrow="Nuestro proceso" title="Cómo trabajamos mes a mes" />
-        <div className="mt-40">
-          <ProcessSteps steps={steps} />
-        </div>
-      </section>
-
-      <section className="px-24 py-64 md:px-80">
-        <Reveal className="mx-auto max-w-[1280px] rounded-[var(--radius-cards)] border border-black/5 border-t-4 border-t-[var(--color-coral-pulse)] bg-white p-32 text-center shadow-[var(--shadow-subtle)] md:p-48">
-          <p className="text-body-sm font-semibold text-[var(--color-charcoal)]">
-            Cómo cuidamos tu inversión
-          </p>
-          <p className="tracking-heading mt-8 text-heading font-semibold text-[var(--color-coral-pulse)]">
-            Optimización semanal
-          </p>
-          <p className="mx-auto mt-8 max-w-[560px] text-body text-[var(--color-graphite)]">
-            Ajustamos palabras clave, anuncios y presupuesto cada semana para
-            que tu inversión rinda más.
-          </p>
-        </Reveal>
-      </section>
-
-      <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">
-        <SectionHeading eyebrow="Preguntas frecuentes" title="Todo lo que debes saber" />
-        <div className="mt-40">
-          <Faq items={faqs} />
-        </div>
-      </section>
+      <Faq items={faqs} />
 
       <CtaBand
-        title="¿Listo para generar clientes desde hoy?"
-        description="Agenda una auditoría gratuita de tu cuenta de Google Ads (o de tu mercado si aún no tienes campañas)."
+        ctaHref="#contacto"
+        title="¿Cuánto de tu presupuesto se va en clics que no compran?"
+        description="Revisamos tu cuenta gratis y te mostramos dónde recuperarlo."
       />
     </>
   );

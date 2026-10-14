@@ -17,9 +17,12 @@ function initials(name: string) {
 export function TeamAvatar({
   member,
   height = 220,
+  fluidHeight,
 }: {
   member: TeamMember;
   height?: number;
+  /** Alto CSS (p. ej. un clamp()) para que la foto escale con la pantalla; `height` queda como tamaño intrínseco. */
+  fluidHeight?: string;
 }) {
   if (member.photoSrc) {
     return (
@@ -30,7 +33,7 @@ export function TeamAvatar({
         height={height}
         priority
         className="object-contain"
-        style={{ height, width: "auto" }}
+        style={{ height: fluidHeight ?? height, width: "auto" }}
       />
     );
   }

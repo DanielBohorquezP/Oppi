@@ -3,6 +3,9 @@ title: "SEO local: cómo aparecer primero cuando buscan tu negocio"
 excerpt: "El SEO no es solo para grandes marcas. Estos son los fundamentos que todo negocio local debería tener listos."
 date: "2026-04-30"
 tag: "SEO"
+pain: "Me buscan en Google y aparece mi competencia."
+icon: "map-pin"
+surface: "ink"
 ---
 
 Cuando alguien busca "panadería cerca de mí" o "clínica dental en [tu ciudad]", Google decide qué negocios mostrar primero según señales muy concretas. La buena noticia: la mayoría son controlables.

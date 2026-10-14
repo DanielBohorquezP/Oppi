@@ -4,6 +4,8 @@ export type TeamMember = {
   role: string;
   blurb: string;
   accent: string;
+  /** El dolor que resuelve, en palabras del cliente (Quiénes Somos). */
+  helpsIf: string;
   /** Ruta a la foto real cuando exista; mientras tanto se muestra un placeholder con iniciales. */
   photoSrc?: string;
 };
@@ -15,6 +17,7 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     role: "Marketing Digital",
     blurb: "Lidera la estrategia de marketing: campañas en Meta Ads, contenido y posicionamiento de marca de cada cuenta.",
     accent: "var(--color-brand-yellow)",
+    helpsIf: "publicas y pautas sin que nadie te escriba.",
     photoSrc: "/Integrantes/Angie.png",
   },
   seo: {
@@ -23,6 +26,7 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     role: "Estrategia SEO",
     blurb: "Lleva la estrategia de contenido y posicionamiento orgánico de cada cuenta.",
     accent: "var(--color-indigo-bloom)",
+    helpsIf: "te buscan y encuentran a tu competencia.",
     photoSrc: "/Integrantes/Daniel.png",
   },
   sem: {
@@ -31,6 +35,7 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     role: "Google Ads (SEM)",
     blurb: "Gestiona y optimiza las campañas de Google Ads de cada cliente.",
     accent: "var(--color-coral-pulse)",
+    helpsIf: "pagas anuncios y no te compran.",
     photoSrc: "/Integrantes/Juanse.png",
   },
 };

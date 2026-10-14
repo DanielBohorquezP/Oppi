@@ -1,12 +1,11 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { TeamAvatar } from "@/components/ui/TeamAvatar";
-import { CONTACT_TRIGGER_HREF } from "@/lib/contact-modal";
 import type { TeamMember } from "@/content/team";
 
 // Banner de presentación: fondo de color propio del servicio, texto a la
-// izquierda y la persona recortada pegada al borde inferior derecho. Vive sobre
-// una sección marfil entre el ServiceIntro y "Qué incluye".
+// izquierda y la persona recortada pegada al borde inferior derecho. Va sobre
+// blanco, entre "Qué incluye" y "Cómo trabajamos".
 const themes: Record<
   string,
   {
@@ -49,11 +48,19 @@ const themes: Record<
   },
 };
 
-export function TeamMemberIntro({ member }: { member: TeamMember }) {
+export function TeamMemberIntro({
+  member,
+  ctaLabel,
+}: {
+  member: TeamMember;
+  /** Por defecto "Agenda con {primer nombre}". */
+  ctaLabel?: string;
+}) {
   const theme = themes[member.key] ?? themes.marketing;
+  const firstName = member.name.split(" ")[0];
 
   return (
-    <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80">
+    <section className="px-24 py-64 md:px-80">
       <Reveal className="mx-auto max-w-[1280px]">
         <div
           className={`relative flex min-h-[420px] flex-col overflow-hidden rounded-[var(--radius-cards)] px-32 pt-48 md:flex-row md:items-center md:px-64 md:pt-0 ${theme.surface}`}
@@ -78,11 +85,11 @@ export function TeamMemberIntro({ member }: { member: TeamMember }) {
               {member.role}
             </p>
             <p className={`mt-16 max-w-[440px] text-body-lg ${theme.body}`}>
-              {member.blurb}
+              {member.blurb} Hablas directo con quien hace el trabajo.
             </p>
             <div className="mt-32">
-              <Button href={CONTACT_TRIGGER_HREF} variant={theme.button}>
-                Agenda una llamada
+              <Button href="#contacto" variant={theme.button}>
+                {ctaLabel ?? `Agenda con ${firstName}`}
               </Button>
             </div>
           </div>

@@ -79,7 +79,7 @@ export function Header() {
         <div className="flex items-center gap-16">
           <div className="hidden md:block">
             <Button variant="nav-outline" href="/quienes-somos#contacto">
-              Agenda una llamada
+              Diagnóstico gratis
             </Button>
           </div>
           <button
@@ -132,7 +132,7 @@ export function Header() {
           ))}
           <div className="mt-16" onClick={() => setOpen(false)}>
             <Button variant="nav-outline" href="/quienes-somos#contacto">
-              Agenda una llamada
+              Diagnóstico gratis
             </Button>
           </div>
         </nav>

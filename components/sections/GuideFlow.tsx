@@ -93,7 +93,7 @@ export function GuideFlow({
         </h2>
         <p className="mt-12 text-body text-[var(--color-frost-gray)]">
           {host.name.split(" ")[0]} te va a escribir por WhatsApp o email para
-          confirmar el horario de tu llamada.
+          confirmar el horario de tu diagnóstico.
         </p>
         {onClose && (
           <Button onClick={onClose} className="mt-24">
@@ -241,7 +241,7 @@ export function GuideFlow({
               disabled={!canSubmit || sending}
               className="mt-24 w-full"
             >
-              {sending ? "Enviando..." : "Agenda una llamada"}
+              {sending ? "Enviando..." : "Agenda tu diagnóstico gratis"}
             </Button>
             {error && (
               <p role="alert" className="mt-12 text-body-sm text-[var(--color-coral-pulse)]">

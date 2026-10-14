@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: "./",
   },
-  title: "Oppi | Visibilidad digital y ventas para tu negocio",
+  title: "Oppi | Agencia de marketing digital, SEO y Google Ads en Barranquilla",
   description:
-    "Marketing digital, estrategia SEO y campañas de Google Ads (SEM) y Meta Ads. Oppi ayuda a tu empresa a conseguir más clientes.",
+    "Que te encuentren a ti, no a tu competencia. SEO, Google Ads y marketing en redes para negocios que quieren clientes, no likes.",
 };
 
 const organizationSchema = {

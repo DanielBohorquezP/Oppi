@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PiArrowRight } from "react-icons/pi";
 import { Button } from "@/components/ui/Button";
 import { HeroGuideCard } from "@/components/sections/HeroGuideCard";
 import { HeroBackdrop } from "@/components/sections/HeroBackdrop";
@@ -7,8 +8,9 @@ import type { Service } from "@/content/guide";
 export function ServiceIntro({
   eyebrow,
   title,
+  highlight,
   description,
-  ctaHref,
+  ctaHref = "#contacto",
   ctaLabel,
   secondaryHref,
   secondaryLabel,
@@ -17,8 +19,11 @@ export function ServiceIntro({
 }: {
   eyebrow: string;
   title: string;
+  /** Parte del título que se pinta en amarillo (debe aparecer tal cual en `title`). */
+  highlight?: string;
   description: string;
-  ctaHref: string;
+  /** Por defecto lleva al formulario guiado de esta misma página. */
+  ctaHref?: string;
   ctaLabel: string;
   secondaryHref?: string;
   secondaryLabel?: string;
@@ -28,6 +33,17 @@ export function ServiceIntro({
   serviceId?: Service["id"];
 }) {
   const split = Boolean(serviceId);
+  const highlightAt = highlight ? title.indexOf(highlight) : -1;
+  const heading =
+    highlight && highlightAt >= 0 ? (
+      <>
+        {title.slice(0, highlightAt)}
+        <span className="text-[var(--color-brand-yellow)]">{highlight}</span>
+        {title.slice(highlightAt + highlight.length)}
+      </>
+    ) : (
+      title
+    );
   return (
     <section className="relative isolate overflow-hidden bg-[var(--color-ink-black)] px-24 py-64 md:px-80 md:py-96">
       <HeroBackdrop splitAt={split ? "lg" : undefined} />
@@ -51,7 +67,7 @@ export function ServiceIntro({
           <h1
             className={`tracking-heading text-[36px] leading-[1.1] font-semibold text-balance text-white sm:text-heading-lg ${split ? "" : "md:text-display"}`}
           >
-            {title}
+            {heading}
           </h1>
           <p
             className={`mt-24 max-w-[560px] text-body-lg text-[var(--color-frost-gray)] ${split ? "" : "mx-auto"}`}
@@ -68,6 +84,7 @@ export function ServiceIntro({
           >
             <Button href={ctaHref} variant="coral">
               {ctaLabel}
+              <PiArrowRight aria-hidden="true" className="ml-8 inline" />
             </Button>
             {secondaryHref && secondaryLabel && (
               <Button href={secondaryHref} variant="ghost-dark">
@@ -77,10 +94,12 @@ export function ServiceIntro({
           </div>
         </div>
         {split && (
-          <HeroGuideCard
-            initialServiceId={serviceId}
-            className="w-full justify-self-center lg:justify-self-end"
-          />
+          <div id="contacto" className="w-full max-w-[440px] scroll-mt-96 justify-self-center lg:justify-self-end">
+            <HeroGuideCard
+              initialServiceId={serviceId}
+              className="w-full"
+            />
+          </div>
         )}
       </div>
     </section>

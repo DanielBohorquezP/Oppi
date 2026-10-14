@@ -1,49 +1,61 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { SectionHeading } from "@/components/ui/SectionHeading";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { TeamAvatar } from "@/components/ui/TeamAvatar";
 import { team } from "@/content/team";
 
-// El acento de SEO es el mismo índigo del fondo de la tarjeta; aquí se usa
-// amarillo para que el placeholder y el rol sean visibles.
-const members = [team.marketing, team.seo, team.sem].map((m) => ({
-  ...m,
-  accent:
-    m.accent === "var(--color-indigo-bloom)"
-      ? "var(--color-brand-yellow)"
-      : m.accent,
-}));
+// Cada persona sobre su color (Angeline amarillo, Daniel índigo, Juanse coral)
+// y, debajo, el dolor del cliente que resuelve.
+const members = [
+  { member: team.marketing, surface: "var(--color-brand-yellow)" },
+  { member: team.seo, surface: "var(--color-ink-black)" },
+  { member: team.sem, surface: "var(--color-coral-pulse)" },
+];
 
-// Sección "conoce al equipo": los tres integrantes juntos. Cuando cada
-// persona tenga foto real, basta con agregar `photoSrc` en content/team.ts.
 export function TeamSection() {
   return (
     <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80 md:py-96">
       <div className="mx-auto max-w-[1280px]">
-        <SectionHeading
-          eyebrow="Nuestro equipo"
-          title="Las personas detrás de tu crecimiento"
-          description="Un equipo pequeño y cercano: hablas directamente con quien hace el trabajo."
-        />
-        <Reveal className="mt-48 grid gap-40 md:grid-cols-3 md:gap-32">
-          {members.map((member) => (
-            <div
+        <div className="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
+          <div>
+            <Eyebrow tone="coral" className="mb-12">
+              Nuestro equipo
+            </Eyebrow>
+            <h2 className="tracking-heading max-w-[640px] text-heading font-semibold text-balance text-[var(--color-ink-black)] md:text-heading-lg">
+              Una persona a cargo de cada frente
+            </h2>
+          </div>
+          <p className="max-w-[360px] text-body-lg text-[var(--color-graphite)]">
+            Un equipo pequeño y cercano: hablas directamente con quien hace el
+            trabajo.
+          </p>
+        </div>
+        <Reveal className="mt-48 grid gap-24 md:grid-cols-3">
+          {members.map(({ member, surface }) => (
+            <article
               key={member.key}
-              className="flex flex-col items-center rounded-3xl bg-[var(--color-ink-black)] px-24 pb-40 pt-40 text-center"
+              className="flex flex-col overflow-hidden rounded-[var(--radius-cards)] border border-black/5 bg-white shadow-[var(--shadow-subtle)]"
             >
-              <TeamAvatar member={member} height={220} />
-              <p
-                className="mt-24 text-body-sm font-semibold uppercase tracking-wide"
-                style={{ color: member.accent }}
+              <div
+                className="flex h-[260px] items-end justify-center overflow-hidden pt-24"
+                style={{ backgroundColor: surface }}
               >
-                {member.role}
-              </p>
-              <p className="mt-8 text-heading-sm font-semibold text-white">
-                {member.name}
-              </p>
-              <p className="mt-12 max-w-[320px] text-body text-[var(--color-frost-gray)]">
-                {member.blurb}
-              </p>
-            </div>
+                <TeamAvatar member={member} height={236} />
+              </div>
+              <div className="flex flex-1 flex-col p-32">
+                <p className="text-body-sm font-semibold uppercase tracking-wide text-[var(--color-coral-pulse)]">
+                  {member.role}
+                </p>
+                <h3 className="mt-8 text-[24px] leading-[1.25] font-semibold text-[var(--color-ink-black)]">
+                  {member.name}
+                </h3>
+                <p className="mt-12 flex-1 text-body text-[var(--color-graphite)]">
+                  {member.blurb}
+                </p>
+                <p className="mt-20 text-body font-bold text-[var(--color-ink-black)]">
+                  Te ayuda si: {member.helpsIf}
+                </p>
+              </div>
+            </article>
           ))}
         </Reveal>
       </div>
