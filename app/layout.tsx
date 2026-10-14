@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     locale: "es_CO",
     url: "./",
   },
-  title: "Oppi | Agencia de marketing digital, SEO y Google Ads en Barranquilla",
+  title: "Oppi | Agencia de marketing digital, SEO y Google Ads",
   description:
     "Que te encuentren a ti, no a tu competencia. SEO, Google Ads y marketing en redes para negocios que quieren clientes, no likes.",
 };
@@ -62,7 +62,6 @@ const organizationSchema = {
     addressLocality: site.city,
     addressCountry: "CO",
   },
-  areaServed: { "@type": "Country", name: "Colombia" },
   knowsAbout: [
     "Marketing digital",
     "Meta Ads",
@@ -75,7 +74,6 @@ const organizationSchema = {
     "@type": "ContactPoint",
     contactType: "customer service",
     telephone: `+${site.whatsappNumber}`,
-    areaServed: "CO",
     availableLanguage: "es",
   },
 };

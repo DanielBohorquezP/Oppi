@@ -14,7 +14,7 @@ export function PainServices() {
         <div className="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
           <div className="max-w-[720px]">
             <Eyebrow tone="coral" className="mb-12">
-              SEO, Google Ads y Marketing Digital en Barranquilla
+              SEO, Google Ads y Marketing Digital
             </Eyebrow>
             <h2 className="tracking-heading text-heading leading-[1.08] font-semibold text-balance text-[var(--color-ink-black)] md:text-[52px]">
               ¿Dónde estás perdiendo clientes hoy?

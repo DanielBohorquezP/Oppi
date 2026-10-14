@@ -10,7 +10,7 @@ import { team } from "@/content/team";
 import { site, whatsappHref } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Quiénes Somos | Oppi, agencia de marketing digital en Barranquilla",
+  title: "Quiénes Somos | Oppi, agencia de marketing digital",
   description:
     "Somos tres personas obsesionadas con que te lleguen clientes. Hablas directo con quien hace el trabajo, sin call center ni tecnicismos.",
 };
@@ -39,7 +39,7 @@ export default function QuienesSomosPage() {
       <section className="overflow-hidden bg-[var(--color-ink-black)] px-24 pt-64 md:px-80 md:pt-[104px]">
         <div className="mx-auto max-w-[1280px]">
           <Eyebrow tone="yellow" className="mb-16">
-            Quiénes somos · Agencia de marketing digital en Barranquilla
+            Quiénes somos · Agencia de marketing digital
           </Eyebrow>
           <h1 className="tracking-heading max-w-[920px] text-[36px] leading-[1.05] font-semibold text-balance text-white md:text-[62px]">
             Somos tres personas obsesionadas con que{" "}

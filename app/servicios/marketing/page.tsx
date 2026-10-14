@@ -11,7 +11,7 @@ import { TeamMemberIntro } from "@/components/sections/TeamMemberIntro";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Marketing Digital y Meta Ads en Barranquilla: redes que venden | Oppi",
+  title: "Marketing Digital y Meta Ads: redes que venden | Oppi",
   description:
     "Deja de publicar y pautar a ciegas. Estrategia, contenido y anuncios en Facebook e Instagram que traen clientes, no solo likes.",
 };

@@ -9,7 +9,7 @@ export const site = {
   /** El mismo número, como se muestra en pantalla. */
   whatsappDisplay: "+57 313 723 3605",
   whatsappMessage: "Hola Oppi, quiero información sobre sus servicios.",
-  /** Ciudad principal para los títulos con intención local. */
+  /** Ciudad del domicilio (política de privacidad y dirección del JSON-LD). Los títulos no la usan: el servicio se ofrece de forma internacional. */
   city: "Barranquilla",
 };
 

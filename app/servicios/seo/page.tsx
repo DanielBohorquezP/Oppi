@@ -18,7 +18,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { team } from "@/content/team";
 
 export const metadata: Metadata = {
-  title: "Agencia SEO en Barranquilla: aparece primero en Google y en la IA | Oppi",
+  title: "Agencia SEO: aparece primero en Google y en la IA | Oppi",
   description:
     "Tus clientes te buscan en Google. Posicionamos tu negocio para que te encuentren a ti y no a tu competencia, también en ChatGPT, Claude, Perplexity y Gemini.",
 };
@@ -116,7 +116,7 @@ export default function SeoPage() {
     <>
       <ServiceIntro
         serviceId="seo"
-        eyebrow="Estrategia SEO en Barranquilla"
+        eyebrow="Estrategia SEO"
         title="Tus clientes te buscan en Google. Hoy encuentran a tu competencia."
         highlight="tu competencia"
         description="Posicionamos tu página para que, cuando alguien busque lo que vendes en Google o le pregunte a una IA como ChatGPT, Claude o Perplexity, tu negocio sea la primera opción. Clientes que llegan solos, mes a mes."
