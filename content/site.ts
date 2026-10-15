@@ -5,9 +5,9 @@ export const site = {
   url: "https://www.oppi.digital",
   name: "Oppi",
   /** Número de WhatsApp en formato internacional, solo dígitos (57 + número). */
-  whatsappNumber: "573137233605",
+  whatsappNumber: "573207518230",
   /** El mismo número, como se muestra en pantalla. */
-  whatsappDisplay: "+57 313 723 3605",
+  whatsappDisplay: "+57 320 751 8230",
   whatsappMessage: "Hola Oppi, quiero información sobre sus servicios.",
   /** Ciudad del domicilio (política de privacidad y dirección del JSON-LD). Los títulos no la usan: el servicio se ofrece de forma internacional. */
   city: "Barranquilla",
