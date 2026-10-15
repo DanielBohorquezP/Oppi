@@ -41,7 +41,8 @@ export function GuideFlow({
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(false);
 
-  const host = team[service?.id ?? "sem"];
+  // Sin servicio elegido se muestra a Daniel (SEO).
+  const host = team[service?.id ?? "seo"];
   const canSubmit =
     contact.name.trim() !== "" &&
     contact.email.trim() !== "" &&

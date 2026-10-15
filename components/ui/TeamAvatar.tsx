@@ -29,7 +29,7 @@ export function TeamAvatar({
       <Image
         src={member.photoSrc}
         alt={member.name}
-        width={Math.round(height * (1086 / 1100))}
+        width={Math.round(height * (member.photoRatio ?? 1))}
         height={height}
         priority
         className="object-contain"

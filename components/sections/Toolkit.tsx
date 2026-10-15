@@ -23,6 +23,8 @@ const items = [
     ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-[var(--color-brand-yellow)]",
     member: team.marketing,
+    // Las fotos de Angeline y Daniel son más angostas: van más altas para pesar igual.
+    photoScale: 1.2,
     avatarAccent: "var(--color-ink-black)",
     scrim: "var(--color-brand-yellow)",
   },
@@ -36,6 +38,7 @@ const items = [
     ownerClass: "text-[var(--color-brand-yellow)]",
     chip: "bg-white/10 text-white",
     member: team.seo,
+    photoScale: 1.2,
     avatarAccent: "#ffffff",
     scrim: "var(--color-ink-black)",
   },
@@ -49,6 +52,7 @@ const items = [
     ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-white",
     member: team.sem,
+    photoScale: 1,
     avatarAccent: "var(--color-ink-black)",
     scrim: "var(--color-coral-pulse)",
   },
@@ -62,6 +66,7 @@ const items = [
     ownerClass: "opacity-70",
     chip: "bg-[var(--color-ink-black)] text-white",
     member: null,
+    photoScale: 1,
     avatarAccent: "var(--color-ink-black)",
     scrim: "#ffffff",
   },
@@ -115,7 +120,7 @@ export function Toolkit() {
                     <>
                       <TeamAvatar
                         member={{ ...item.member, accent: item.avatarAccent }}
-                        height={280}
+                        height={Math.round(280 * item.photoScale)}
                       />
                       {/* Desvanecido hacia el color del panel para que el título se lea. */}
                       <span
@@ -147,7 +152,7 @@ export function Toolkit() {
                   {item.member ? (
                     <TeamAvatar
                       member={{ ...item.member, accent: item.avatarAccent }}
-                      height={400}
+                      height={Math.round(380 * item.photoScale)}
                     />
                   ) : (
                     <Icon className="h-[256px] w-[256px] opacity-20" />

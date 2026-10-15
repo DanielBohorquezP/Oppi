@@ -8,6 +8,8 @@ export type TeamMember = {
   helpsIf: string;
   /** Ruta a la foto real cuando exista; mientras tanto se muestra un placeholder con iniciales. */
   photoSrc?: string;
+  /** Ancho / alto de la foto (recortada a lo visible), para reservar el espacio exacto. */
+  photoRatio?: number;
 };
 
 export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
@@ -19,6 +21,7 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     accent: "var(--color-brand-yellow)",
     helpsIf: "publicas y pautas sin que nadie te escriba.",
     photoSrc: "/Integrantes/Angie.png",
+    photoRatio: 0.421,
   },
   seo: {
     key: "seo",
@@ -28,6 +31,7 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     accent: "var(--color-indigo-bloom)",
     helpsIf: "te buscan y encuentran a tu competencia.",
     photoSrc: "/Integrantes/Daniel.png",
+    photoRatio: 0.533,
   },
   sem: {
     key: "sem",
@@ -37,5 +41,6 @@ export const team: Record<"marketing" | "seo" | "sem", TeamMember> = {
     accent: "var(--color-coral-pulse)",
     helpsIf: "pagas anuncios y no te compran.",
     photoSrc: "/Integrantes/Juanse.png",
+    photoRatio: 0.721,
   },
 };
