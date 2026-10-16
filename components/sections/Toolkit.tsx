@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { PiCrosshair, PiMagnifyingGlass, PiMonitor } from "react-icons/pi";
 import type { IconType } from "react-icons";
 import { TeamPhoto } from "@/components/ui/TeamPhoto";
@@ -72,8 +72,29 @@ const panels: Panel[] = [
   },
 ];
 
+// El acordeón solo existe cuando las 3 tarjetas caben en una fila. En celular
+// (y tablet vertical) van apiladas, siempre desplegadas y sin interacción.
+const ACCORDION_QUERY = "(min-width: 840px)";
+
+function subscribeAccordion(onChange: () => void) {
+  const mq = window.matchMedia(ACCORDION_QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
 export function Toolkit() {
   const [active, setActive] = useState(0);
+  const accordion = useSyncExternalStore(
+    subscribeAccordion,
+    () => window.matchMedia(ACCORDION_QUERY).matches,
+    () => false
+  );
+  // Sin transiciones en el primer pintado, para que no se vea el salto al hidratar.
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => setReady(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
 
   return (
     <section className="bg-[#fff8e6] px-[clamp(24px,5vw,80px)] py-[clamp(72px,9vw,128px)]">
@@ -101,18 +122,25 @@ export function Toolkit() {
           className="mt-[48px] flex flex-wrap gap-[16px]"
         >
           {panels.map((panel, i) => {
-            const on = active === i;
+            const on = !accordion || active === i;
             const Icon = panel.icon;
             const activate = () => setActive(i);
+            const Tag = accordion ? "button" : "div";
             return (
-              <button
+              <Tag
                 key={panel.member}
-                type="button"
-                aria-expanded={on}
-                onMouseEnter={activate}
-                onFocus={activate}
-                onClick={activate}
-                className="relative flex min-h-[480px] min-w-[230px] cursor-pointer flex-col justify-between overflow-hidden rounded-[28px] p-[32px] text-left [transition:flex_700ms_cubic-bezier(0.16,1,0.3,1)]"
+                {...(accordion
+                  ? {
+                      type: "button" as const,
+                      "aria-expanded": on,
+                      onMouseEnter: activate,
+                      onFocus: activate,
+                      onClick: activate,
+                    }
+                  : {})}
+                className={`relative flex min-h-[480px] min-w-[230px] flex-col justify-between overflow-hidden rounded-[28px] p-[32px] text-left ${
+                  accordion ? "cursor-pointer" : ""
+                } ${ready ? "[transition:flex_700ms_cubic-bezier(0.16,1,0.3,1)]" : ""}`}
                 style={{
                   flex: on ? "2.6 1 0" : "1 1 0",
                   background: panel.surface,
@@ -129,7 +157,7 @@ export function Toolkit() {
                   member={panel.member}
                   alt=""
                   height={420}
-                  className="absolute z-0 origin-bottom [transition:all_700ms_cubic-bezier(0.16,1,0.3,1)]"
+                  className={`absolute z-0 origin-bottom ${ready ? "[transition:all_700ms_cubic-bezier(0.16,1,0.3,1)]" : ""}`}
                   style={{
                     left: on ? "calc(100% - 16px)" : "50%",
                     bottom: on ? "0px" : "130px",
@@ -140,7 +168,7 @@ export function Toolkit() {
                 />
                 <span
                   aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[66%] [mask-image:linear-gradient(to_top,black_55%,transparent)] [transition:opacity_400ms]"
+                  className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[66%] [mask-image:linear-gradient(to_top,black_55%,transparent)] ${ready ? "[transition:opacity_400ms]" : ""}`}
                   style={{
                     background: `linear-gradient(to right, ${panel.surface} 45%, transparent 80%)`,
                     opacity: on ? 1 : 0,
@@ -156,7 +184,7 @@ export function Toolkit() {
                     {panel.title}
                   </span>
                   <span
-                    className={`block max-w-[260px] overflow-hidden text-[16px] leading-[1.45] [transition:all_500ms_cubic-bezier(.16,1,.3,1)] ${panel.descriptionClass}`}
+                    className={`block max-w-[260px] overflow-hidden text-[16px] leading-[1.45] ${ready ? "[transition:all_500ms_cubic-bezier(.16,1,.3,1)]" : ""} ${panel.descriptionClass}`}
                     style={{
                       marginTop: on ? "12px" : "0px",
                       maxHeight: on ? "220px" : "0px",
@@ -166,7 +194,7 @@ export function Toolkit() {
                     {panel.description}
                   </span>
                 </span>
-              </button>
+              </Tag>
             );
           })}
         </div>
