@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
@@ -92,12 +93,12 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-[16px]">
-          <Link
+          <ContactLink
             href={contactHref}
             className="hidden whitespace-nowrap rounded-[40px] bg-[#ffe848] px-[20px] py-[9px] text-[14px] font-bold text-[#040054] [transition:transform_300ms_cubic-bezier(.16,1,.3,1),background-color_200ms] hover:bg-white hover:text-[#040054] hover:[transform:translateY(-2px)] md:block"
           >
             Diagnóstico gratis
-          </Link>
+          </ContactLink>
           <button
             className="flex h-[40px] w-[40px] items-center justify-center md:hidden"
             aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -146,13 +147,13 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Link
+          <ContactLink
             href={contactHref}
             onClick={() => setOpen(false)}
             className="mt-[16px] self-start rounded-[40px] bg-[#ffe848] px-[20px] py-[9px] text-[14px] font-bold text-[#040054]"
           >
             Diagnóstico gratis
-          </Link>
+          </ContactLink>
         </nav>
       )}
     </header>

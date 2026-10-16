@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { PiArrowRight, PiWhatsappLogo } from "react-icons/pi";
 import { CtaBlobs } from "@/components/motion/CtaBlobs";
 import { whatsappHref } from "@/content/site";
@@ -25,13 +25,13 @@ export function ServiceCta({
           {description}
         </p>
         <div className="mt-[36px] flex flex-wrap justify-center gap-[12px]">
-          <Link
+          <ContactLink
             href="#contacto"
             className="inline-flex items-center gap-[10px] rounded-[40px] bg-[#f8673e] px-[28px] py-[15px] text-[16px] font-bold text-white shadow-[0_12px_30px_-10px_rgba(248,103,62,0.7)] [transition:transform_350ms_cubic-bezier(.16,1,.3,1),background-color_200ms,color_200ms] hover:bg-[#ffe848] hover:text-[#040054] hover:[transform:translateY(-3px)]"
           >
             Agenda tu diagnóstico gratis
             <PiArrowRight aria-hidden="true" />
-          </Link>
+          </ContactLink>
           <a
             href={whatsappHref}
             target="_blank"

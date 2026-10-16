@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { useEffect, useRef, useState } from "react";
 import { PiArrowRight } from "react-icons/pi";
 
@@ -71,13 +71,13 @@ export function ProcessSteps({
             Sin letra pequeña: así se ve cada etapa y lo que recibes en cada
             una.
           </p>
-          <Link
+          <ContactLink
             href="#contacto"
             className="mt-[32px] inline-flex items-center gap-[8px] rounded-[40px] border border-[rgba(4,0,84,0.2)] px-[22px] py-[12px] text-[15px] font-bold text-[#040054] [transition:background-color_250ms,color_250ms,border-color_250ms] hover:border-[#040054] hover:bg-[#040054] hover:text-white"
           >
             Empieza por el diagnóstico
             <PiArrowRight aria-hidden="true" />
-          </Link>
+          </ContactLink>
         </div>
 
         <div

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import {
   PiArrowDown,
   PiArrowLeft,
@@ -67,13 +68,13 @@ export function ServiceHero({
             data-delay="360"
             className="mt-[36px] flex flex-wrap gap-[12px]"
           >
-            <Link
+            <ContactLink
               href="#contacto"
               className="inline-flex items-center gap-[10px] rounded-[40px] bg-[#f8673e] px-[26px] py-[14px] text-[16px] font-bold max-w-full sm:whitespace-nowrap text-white shadow-[0_12px_30px_-10px_rgba(248,103,62,0.7)] [transition:transform_350ms_cubic-bezier(.16,1,.3,1),box-shadow_350ms,background-color_200ms,color_200ms] hover:bg-[#ffe848] hover:text-[#040054] hover:shadow-[0_18px_36px_-12px_rgba(255,232,72,0.6)] hover:[transform:translateY(-3px)]"
             >
               {page.cta}
               <PiArrowRight aria-hidden="true" />
-            </Link>
+            </ContactLink>
             <Link
               href="#dolores"
               className="inline-flex items-center gap-[8px] rounded-[40px] border border-white/[0.22] px-[26px] py-[14px] text-[16px] font-bold max-w-full sm:whitespace-nowrap text-white [transition:border-color_200ms,color_200ms,transform_350ms_cubic-bezier(.16,1,.3,1)] hover:border-[#ffe848] hover:text-[#ffe848] hover:[transform:translateY(-3px)]"

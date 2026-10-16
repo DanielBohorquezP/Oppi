@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { PiArrowRight, PiWhatsappLogo } from "react-icons/pi";
 import { Blob } from "@/components/motion/Blob";
 import { TeamPhoto } from "@/components/ui/TeamPhoto";
@@ -38,13 +38,13 @@ export function FinalCta() {
             primero. Sin compromiso.
           </p>
           <div className="mt-[32px] flex flex-wrap gap-[12px]">
-            <Link
+            <ContactLink
               href="#contacto"
               className="inline-flex items-center gap-[10px] rounded-[40px] bg-[#f8673e] px-[28px] py-[15px] text-[16px] font-bold max-w-full sm:whitespace-nowrap text-white shadow-[0_12px_30px_-10px_rgba(248,103,62,0.7)] [transition:transform_350ms_cubic-bezier(.16,1,.3,1),background-color_200ms,color_200ms] hover:bg-[#040054] hover:text-[#ffe848] hover:[transform:translateY(-3px)]"
             >
               Agenda tu diagnóstico gratis
               <PiArrowRight aria-hidden="true" />
-            </Link>
+            </ContactLink>
             <a
               href={whatsappHref}
               target="_blank"

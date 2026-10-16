@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ContactLink } from "@/components/ui/ContactLink";
 import { PiArrowRight } from "react-icons/pi";
 import { TeamPhoto } from "@/components/ui/TeamPhoto";
 import { team } from "@/content/team";
@@ -50,14 +50,14 @@ export function TeamMemberIntro({
           >
             {member.blurb} Hablas directo con quien hace el trabajo.
           </p>
-          <Link
+          <ContactLink
             href="#contacto"
             className="mt-[28px] inline-flex items-center gap-[8px] rounded-[40px] px-[24px] py-[13px] text-[16px] font-bold [transition:transform_350ms_cubic-bezier(.16,1,.3,1)] hover:[transform:translateY(-3px)]"
             style={{ background: page.btnBg, color: page.btnText }}
           >
             Agenda con {first}
             <PiArrowRight aria-hidden="true" />
-          </Link>
+          </ContactLink>
         </div>
         <TeamPhoto
           member={serviceKey}
