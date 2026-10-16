@@ -57,10 +57,15 @@ export default function ExperienciaPage() {
           eyebrow="Experiencia"
           title="Resultados reales, no promesas vacías"
           description="Estos son algunos de los negocios que ya trabajan con Oppi."
+          reveal
         />
       </div>
 
-      <section className="mx-auto flex max-w-[1280px] justify-center px-24 py-64 md:px-80">
+      <section
+        data-reveal="scale"
+        data-delay="200"
+        className="mx-auto flex max-w-[1280px] justify-center px-24 py-64 md:px-80"
+      >
         <CircularTestimonials
           testimonials={caseTestimonials}
           autoplay

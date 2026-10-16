@@ -4,7 +4,6 @@ import type { IconType } from "react-icons";
 import { PiArrowRight, PiArticle, PiBrowser, PiMapPin } from "react-icons/pi";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { TagChip } from "@/components/ui/TagChip";
-import { Reveal } from "@/components/motion/Reveal";
 import { formatPostDate, getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
@@ -44,7 +43,7 @@ export default function BlogPage() {
     <>
       <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80 md:py-96">
         <div className="mx-auto flex max-w-[1280px] flex-wrap items-end justify-between gap-x-64 gap-y-24">
-          <div className="max-w-[720px]">
+          <div data-reveal="up" className="max-w-[720px]">
             <Eyebrow tone="coral" className="mb-12">
               Blog · Marketing, SEO y Google Ads
             </Eyebrow>
@@ -52,7 +51,11 @@ export default function BlogPage() {
               Ideas para vender más, sin tecnicismos
             </h1>
           </div>
-          <p className="max-w-[380px] text-body-lg text-[var(--color-graphite)]">
+          <p
+            data-reveal="up"
+            data-delay="120"
+            className="max-w-[380px] text-body-lg text-[var(--color-graphite)]"
+          >
             Guías prácticas para que te encuentren, te elijan y te compren.
             Escritas para dueños de negocio, no para expertos.
           </p>
@@ -60,15 +63,17 @@ export default function BlogPage() {
       </section>
 
       <section className="px-24 py-64 md:px-80 md:py-96">
-        <Reveal className="mx-auto grid max-w-[1280px] gap-24 md:grid-cols-2">
-          {posts.map((post) => {
+        <div className="mx-auto grid max-w-[1280px] gap-24 md:grid-cols-2">
+          {posts.map((post, index) => {
             const Icon = icons[post.icon ?? ""] ?? PiArticle;
             const surface = surfaces[post.surface ?? ""] ?? surfaces.ink;
             return (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="flex flex-col overflow-hidden rounded-[var(--radius-cards)] border border-black/5 bg-white shadow-[var(--shadow-subtle)] transition-[transform,box-shadow] duration-300 hover:-translate-y-4 hover:shadow-[0_18px_40px_-18px_rgba(4,0,84,0.3)]"
+                data-reveal="up"
+                data-delay={index * 100}
+                className="flex flex-col overflow-hidden rounded-[var(--radius-cards)] border border-black/5 bg-white shadow-[var(--shadow-subtle)] [transition:transform_500ms_cubic-bezier(.16,1,.3,1),box-shadow_500ms] hover:shadow-[0_30px_60px_-28px_rgba(4,0,84,0.35)] hover:[transform:translateY(-8px)]"
               >
                 <div
                   className="flex min-h-[200px] flex-col justify-between gap-24 p-32"
@@ -105,7 +110,7 @@ export default function BlogPage() {
               </Link>
             );
           })}
-        </Reveal>
+        </div>
       </section>
     </>
   );

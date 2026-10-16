@@ -180,6 +180,7 @@ export const CircularTestimonials = ({
         {/* Images */}
         <div className="image-container" ref={imageContainerRef}>
           {testimonials.map((testimonial, index) => (
+            // eslint-disable-next-line @next/next/no-img-element -- imagen animada por estilos en línea; el layout de Experiencia no se toca
             <img
               key={testimonial.src}
               src={testimonial.src}

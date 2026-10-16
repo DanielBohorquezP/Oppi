@@ -1,24 +1,21 @@
-import { cn } from "@/lib/utils";
 import { GuideFlow } from "@/components/sections/GuideFlow";
 import type { Service } from "@/content/guide";
 
 /*
-  Tarjeta guiada del hero (inspirada en el "Paso 1 de 3" de kickranking).
-  El flujo vive en GuideFlow y es el mismo que abre el popup de agendamiento.
+  Tarjeta de vidrio del hero con el formulario guiado de 3 pasos (id
+  "contacto"). Es el destino de todos los "Diagnóstico gratis" de la página.
 */
 export function HeroGuideCard({
-  className,
   initialServiceId,
 }: {
-  className?: string;
   initialServiceId?: Service["id"];
 }) {
   return (
     <div
-      className={cn(
-        "relative max-w-[440px] overflow-hidden rounded-[24px] border border-white/10 bg-white/[0.04] p-32 backdrop-blur",
-        className
-      )}
+      id="contacto"
+      data-reveal="scale"
+      data-delay="300"
+      className="relative min-w-0 flex-[0_1_440px] scroll-mt-[110px] overflow-hidden rounded-[28px] border border-white/[0.14] bg-white/[0.06] p-[32px] shadow-[0_40px_80px_-30px_rgba(0,0,0,0.5)] backdrop-blur-[16px]"
     >
       <GuideFlow initialServiceId={initialServiceId} />
     </div>

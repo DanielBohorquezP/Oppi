@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { services } from "@/content/services";
-import { VariableFontHover } from "@/components/ui/variable-font-hover";
 
 export function ServicesMenu({ dark = false }: { dark?: boolean }) {
   const [open, setOpen] = useState(false);
@@ -59,19 +58,15 @@ export function ServicesMenu({ dark = false }: { dark?: boolean }) {
         aria-haspopup="true"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
-        className={`flex items-center gap-4 text-body-sm ${
+        className={`flex items-center gap-[4px] whitespace-nowrap text-[14px] transition-colors duration-200 hover:text-[#ffe848] ${
           isActive
-            ? "text-[var(--color-amber-edge)]"
+            ? "font-bold text-[#f8673e]"
             : dark
               ? "text-white"
               : "text-[var(--color-ink-black)]"
         }`}
       >
-        <VariableFontHover
-          label="Servicios"
-          fromFontVariationSettings="'wght' 500"
-          toFontVariationSettings="'wght' 700"
-        />
+        Servicios
         <ChevronIcon open={open} />
       </button>
 
@@ -107,8 +102,8 @@ export function ServicesMenu({ dark = false }: { dark?: boolean }) {
 function ChevronIcon({ open }: { open: boolean }) {
   return (
     <svg
-      width="14"
-      height="14"
+      width="12"
+      height="12"
       viewBox="0 0 24 24"
       fill="none"
       className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}

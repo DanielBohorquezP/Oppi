@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PiArrowRight, PiWhatsappLogo } from "react-icons/pi";
-import { Button } from "@/components/ui/Button";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { TeamAvatar } from "@/components/ui/TeamAvatar";
-import { Reveal } from "@/components/motion/Reveal";
+import { CtaBlobs } from "@/components/motion/CtaBlobs";
+import { PulseDot } from "@/components/motion/PulseDot";
 import { TeamSection } from "@/components/sections/TeamSection";
-import { CONTACT_TRIGGER_HREF } from "@/lib/contact-modal";
-import { team } from "@/content/team";
+import { TeamPhoto } from "@/components/ui/TeamPhoto";
 import { site, whatsappHref } from "@/content/site";
 
 export const metadata: Metadata = {
@@ -36,112 +34,167 @@ const values = [
 export default function QuienesSomosPage() {
   return (
     <>
-      <section className="overflow-hidden bg-[var(--color-ink-black)] px-24 pt-64 md:px-80 md:pt-[104px]">
+      {/* El hero de esta página siempre fue índigo liso: se conserva tal cual. */}
+      <section className="relative isolate overflow-hidden bg-[#040054] px-[clamp(24px,5vw,80px)] pt-[clamp(64px,8vw,112px)] pb-0">
         <div className="mx-auto max-w-[1280px]">
-          <Eyebrow tone="yellow" className="mb-16">
-            Quiénes somos · Agencia de marketing digital
-          </Eyebrow>
-          <h1 className="tracking-heading max-w-[920px] text-[36px] leading-[1.05] font-semibold text-balance text-white md:text-[62px]">
-            Somos tres personas obsesionadas con que{" "}
-            <span className="text-[var(--color-brand-yellow)]">te lleguen clientes</span>.
+          <div data-reveal="up">
+            <p className="inline-flex max-w-full items-center gap-[12px] rounded-full border border-white/15 bg-white/[0.06] py-[8px] pr-[16px] pl-[12px] text-[length:clamp(11px,1.2vw,13px)] font-bold tracking-[0.06em] text-balance text-[#ffe848] uppercase">
+              <PulseDot />
+              Quiénes somos · Agencia de marketing digital
+            </p>
+          </div>
+          <h1
+            data-reveal="up"
+            data-delay="120"
+            className="mt-[24px] max-w-[960px] text-[length:clamp(38px,5vw,68px)] leading-[1.03] tracking-[-0.022em] text-balance text-white"
+          >
+            Somos un equipo obsesionado con que{" "}
+            <span className="text-[#ffe848]">te lleguen clientes</span>.
           </h1>
-          <p className="mt-24 max-w-[600px] text-body-lg text-[var(--color-frost-gray)]">
+          <p
+            data-reveal="up"
+            data-delay="240"
+            className="mt-[24px] max-w-[600px] text-[18px] leading-[1.55] text-pretty text-[#e0e0e0]"
+          >
             Oppi nació para cerrar la brecha entre lo que las empresas ofrecen y
             lo que sus clientes encuentran en internet. Sin call center, sin
             tecnicismos: hablas con quien hace el trabajo.
           </p>
-          <div className="mt-56 flex items-end justify-center">
-            <div className="-mr-[28px]">
-              <TeamAvatar member={team.marketing} height={340} fluidHeight="clamp(120px, 26vw, 340px)" />
-            </div>
-            <div className="relative z-10">
-              <TeamAvatar member={team.seo} height={390} fluidHeight="clamp(140px, 30vw, 390px)" />
-            </div>
-            <div className="-ml-[28px]">
-              <TeamAvatar member={team.sem} height={340} fluidHeight="clamp(120px, 26vw, 340px)" />
-            </div>
+          <div className="mt-[56px] flex flex-nowrap items-end justify-center">
+            <TeamPhoto
+              member="marketing"
+              height="clamp(200px,26vw,340px)"
+              reveal="up"
+              delay={420}
+              className="mr-[-4%]"
+            />
+            <TeamPhoto
+              member="seo"
+              height="clamp(230px,30vw,390px)"
+              reveal="up"
+              delay={300}
+              className="relative z-[1]"
+              priority
+            />
+            <TeamPhoto
+              member="sem"
+              height="clamp(200px,26vw,340px)"
+              reveal="up"
+              delay={540}
+              className="ml-[-4%]"
+            />
           </div>
         </div>
       </section>
 
-      <section className="px-24 py-64 md:px-80 md:py-96">
-        <Reveal className="mx-auto flex max-w-[1280px] flex-wrap gap-x-80 gap-y-32">
-          <div className="flex-[1_1_380px]">
-            <Eyebrow tone="coral" className="mb-12">
+      <section className="px-[clamp(24px,5vw,80px)] py-[clamp(72px,9vw,128px)]">
+        <div className="mx-auto flex max-w-[1280px] flex-wrap items-start gap-x-[80px] gap-y-[40px]">
+          <div data-reveal="up" className="min-w-0 flex-[1_1_460px]">
+            <p className="text-[14px] font-bold tracking-[0.06em] text-[#f8673e] uppercase">
               Nuestra misión
-            </Eyebrow>
-            <h2 className="tracking-heading text-heading font-semibold text-balance text-[var(--color-ink-black)] md:text-heading-lg">
+            </p>
+            <h2 className="mt-[12px] text-[length:clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-balance text-[#040054]">
               Que ningún negocio pierda una venta por falta de visibilidad
               digital.
             </h2>
           </div>
-          <div className="flex flex-[1_1_420px] flex-col gap-20 text-body-lg leading-[1.55] text-[var(--color-graphite)]">
-            <p>
-              Trabajamos con negocios locales, clínicas, restaurantes y
-              empresas de servicios que saben que su producto es bueno, pero no
-              logran que suficientes personas lo encuentren o confíen en él en
+          <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-[20px] pt-[8px]">
+            <p
+              data-reveal="up"
+              data-delay="120"
+              className="text-[18px] leading-[1.6] text-[#3d3d3d]"
+            >
+              Trabajamos con negocios locales, clínicas, restaurantes y empresas
+              de servicios que saben que su producto es bueno, pero no logran
+              que suficientes personas lo encuentren o confíen en él en
               internet.
             </p>
-            <p>
+            <p
+              data-reveal="up"
+              data-delay="220"
+              className="text-[18px] leading-[1.6] text-[#3d3d3d]"
+            >
               Por eso atacamos los tres lugares donde se pierden clientes:
               cuando te buscan y no apareces, cuando pagas anuncios que no
               venden y cuando publicas en redes sin que nadie te escriba.
             </p>
           </div>
-        </Reveal>
+        </div>
       </section>
 
       <TeamSection />
 
-      <section className="px-24 py-64 md:px-80 md:py-96">
+      <section className="px-[clamp(24px,5vw,80px)] py-[clamp(72px,9vw,128px)]">
         <div className="mx-auto max-w-[1280px]">
-          <Eyebrow tone="coral" className="mb-12">
-            Lo que nos guía
-          </Eyebrow>
-          <Reveal className="mt-24 grid gap-32 border-t-2 border-[var(--color-ink-black)] pt-32 md:grid-cols-3 md:gap-48">
-            {values.map((value, index) => (
-              <div key={value.title}>
-                <p
-                  className="text-[20px] text-[var(--color-coral-pulse)]"
-                  style={{ fontFamily: "var(--font-archivo-black)" }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </p>
-                <h3 className="mt-12 text-[24px] leading-[1.25] font-semibold text-[var(--color-ink-black)]">
+          <div data-reveal="up">
+            <p className="text-[14px] font-bold tracking-[0.06em] text-[#f8673e] uppercase">
+              Lo que nos guía
+            </p>
+            <h2 className="mt-[12px] max-w-[760px] text-[length:clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-balance text-[#040054]">
+              Tres reglas que no negociamos
+            </h2>
+          </div>
+          <div className="relative mt-[48px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,280px),1fr))] gap-x-[32px]">
+            <div
+              data-reveal="line"
+              aria-hidden="true"
+              className="absolute inset-x-0 top-0 h-[2px] origin-left bg-[#040054]"
+            />
+            {values.map((value, i) => (
+              <div
+                key={value.title}
+                data-reveal="up"
+                data-delay={150 + i * 130}
+                className="pt-[36px]"
+              >
+                <span className="font-[family-name:var(--font-archivo-black)] text-[48px] leading-none text-[#f8673e]">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-[20px] text-[26px] leading-[1.2] text-[#040054]">
                   {value.title}
                 </h3>
-                <p className="mt-12 text-body text-[var(--color-graphite)]">
+                <p className="mt-[12px] text-[16px] leading-[1.55] text-[#3d3d3d]">
                   {value.description}
                 </p>
               </div>
             ))}
-          </Reveal>
+          </div>
         </div>
       </section>
 
-      <section id="contacto" className="scroll-mt-96 px-24 pb-64 md:px-80 md:pb-96">
-        <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-x-64 gap-y-32 rounded-[32px] bg-[var(--color-ink-black)] p-32 md:p-64">
-          <div className="max-w-[640px] flex-[1_1_420px]">
-            <h2 className="tracking-heading text-heading font-semibold text-balance text-white md:text-heading-lg">
+      <section
+        id="contacto"
+        className="scroll-mt-[96px] px-[clamp(24px,5vw,80px)] pb-[clamp(72px,9vw,128px)]"
+      >
+        <div
+          data-reveal="scale"
+          className="relative isolate mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-[32px] overflow-hidden rounded-[36px] bg-[#040054] p-[clamp(40px,6vw,80px)]"
+        >
+          <CtaBlobs />
+          <div className="min-w-0 flex-[1_1_460px]">
+            <h2 className="text-[length:clamp(32px,4.2vw,56px)] leading-[1.05] tracking-[-0.02em] text-balance text-white">
               ¿Cuántos clientes se están yendo con tu competencia hoy?
             </h2>
-            <p className="mt-16 text-body-lg text-[var(--color-frost-gray)]">
+            <p className="mt-[16px] max-w-[480px] text-[18px] leading-[1.5] text-[#e0e0e0]">
               En 20 minutos te mostramos dónde los estás perdiendo y qué hacer
               primero. Sin compromiso.
             </p>
           </div>
-          <div className="flex flex-col items-start gap-8">
-            <Button href={CONTACT_TRIGGER_HREF} variant="coral">
+          <div className="flex flex-col items-start gap-[12px]">
+            <Link
+              href="/#contacto"
+              className="inline-flex items-center gap-[10px] rounded-[40px] bg-[#f8673e] px-[28px] py-[15px] text-[16px] font-bold max-w-full sm:whitespace-nowrap text-white shadow-[0_12px_30px_-10px_rgba(248,103,62,0.7)] [transition:transform_350ms_cubic-bezier(.16,1,.3,1),background-color_200ms,color_200ms] hover:bg-[#ffe848] hover:text-[#040054] hover:[transform:translateY(-3px)]"
+            >
               Agenda tu diagnóstico gratis
-              <PiArrowRight aria-hidden="true" className="ml-8 inline" />
-            </Button>
+              <PiArrowRight aria-hidden="true" />
+            </Link>
             <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-8 py-12 text-body-sm text-[var(--color-frost-gray)] underline-offset-4 hover:text-white hover:underline"
+              className="flex items-center gap-[8px] px-[4px] py-[8px] text-[14px] text-[#e0e0e0] [transition:gap_300ms,color_300ms] hover:gap-[12px] hover:text-white"
             >
-              <PiWhatsappLogo size={18} aria-hidden="true" className="text-[var(--color-brand-yellow)]" />
+              <PiWhatsappLogo aria-hidden="true" className="text-[18px] text-[#ffe848]" />
               WhatsApp: {site.whatsappDisplay}
             </a>
           </div>

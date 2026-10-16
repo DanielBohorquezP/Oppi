@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
+import { MotionRoot } from "@/components/motion/MotionRoot";
 import { ContactModalProvider } from "@/lib/contact-modal";
 import { ContactModal } from "@/components/ui/ContactModal";
 import { site } from "@/content/site";
@@ -91,6 +92,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             __html: JSON.stringify(organizationSchema).replace(/</g, "\\u003c"),
           }}
         />
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important}"}</style>
+        </noscript>
+        <MotionRoot />
         <ContactModalProvider>
           <Header />
           <main className="flex-1">{children}</main>

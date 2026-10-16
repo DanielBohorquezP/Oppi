@@ -1,42 +1,67 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { PiWhatsappLogo } from "react-icons/pi";
-import { whatsappHref } from "@/content/site";
+import { usePathname } from "next/navigation";
+import { PiWhatsappLogoFill } from "react-icons/pi";
+import { whatsappFloatHref } from "@/content/site";
 
 /*
-  Botón flotante de WhatsApp (solo el logo, en el verde de WhatsApp). El globo de
-  texto aparece unos segundos y se va solo, para no tapar contenido; en móvil
-  no se muestra (el círculo ya se entiende solo).
+  Botón flotante de WhatsApp. En Inicio y Servicios (las páginas con el
+  formulario #contacto en el hero) solo aparece cuando ese formulario ya quedó
+  por encima del viewport y faltan más de 700 px para el final de la página;
+  en el resto de páginas está siempre visible.
 */
 export function WhatsAppFloat() {
-  const [showBubble, setShowBubble] = useState(false);
+  const pathname = usePathname();
+  const afterForm = pathname === "/" || pathname.startsWith("/servicios/");
+  const [pastForm, setPastForm] = useState(false);
+  const visible = !afterForm || pastForm;
 
   useEffect(() => {
-    const show = setTimeout(() => setShowBubble(true), 2500);
-    const hide = setTimeout(() => setShowBubble(false), 8500);
-    return () => {
-      clearTimeout(show);
-      clearTimeout(hide);
+    if (!afterForm) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const form = document.getElementById("contacto");
+      if (!form) return;
+      const remaining =
+        document.documentElement.scrollHeight -
+        (window.scrollY + window.innerHeight);
+      setPastForm(form.getBoundingClientRect().bottom < 0 && remaining > 700);
     };
-  }, []);
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+
+    raf = requestAnimationFrame(update);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [afterForm, pathname]);
 
   return (
     <a
-      href={whatsappHref}
+      href={whatsappFloatHref}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="noopener"
       aria-label="Escríbenos por WhatsApp"
-      className="group fixed bottom-24 left-24 z-40 flex items-end gap-8"
+      tabIndex={visible ? undefined : -1}
+      className={`fixed right-[16px] bottom-[16px] sm:right-[24px] sm:bottom-[24px] z-[60] inline-flex items-center gap-[12px] rounded-full bg-[#25d366] p-[10px] sm:pr-[24px] text-[16px] font-bold text-white shadow-[0_18px_40px_-12px_rgba(4,0,84,0.55)] animate-[oppiWaPulse_2.2s_ease-out_infinite] [transition:transform_600ms_cubic-bezier(.16,1,.3,1),opacity_400ms,background-color_200ms] hover:bg-[#1ebe5b] hover:text-white ${
+        visible
+          ? "opacity-100 [transform:translateY(0)]"
+          : "pointer-events-none opacity-0 [transform:translateY(160%)]"
+      }`}
     >
-      <span className="flex h-64 w-64 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_-8px_rgba(0,0,0,0.35)] transition group-hover:scale-105">
-        <PiWhatsappLogo size={34} aria-hidden="true" />
+      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-full bg-white text-[28px] text-[#25d366]">
+        <PiWhatsappLogoFill aria-hidden="true" />
       </span>
-      <span
-        className={`mb-40 hidden rounded-[16px] rounded-bl-none bg-white px-16 py-8 text-body-sm font-semibold text-[var(--color-ink-black)] shadow-[var(--shadow-subtle)] transition-[opacity,transform] duration-500 ease-out motion-reduce:transition-none group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100 sm:block ${
-          showBubble ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-8 opacity-0"
-        }`}
-      >
+      <span className="hidden flex-col leading-[1.15] sm:flex">
+        <span className="text-[12px] font-bold opacity-90">¿Hablamos?</span>
         Escríbenos por WhatsApp
       </span>
     </a>

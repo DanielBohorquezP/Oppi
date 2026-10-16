@@ -13,6 +13,13 @@ export const site = {
   city: "Barranquilla",
 };
 
+export const whatsappFloatMessage = "Hola Oppi, quiero mi diagnóstico gratis";
+
+/** Enlace del botón flotante de WhatsApp. */
+export const whatsappFloatHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
+  whatsappFloatMessage
+)}`;
+
 export const whatsappHref = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(
   site.whatsappMessage
 )}`;

@@ -3,10 +3,20 @@ import Image from "next/image";
 import { services } from "@/content/services";
 import { site, whatsappHref } from "@/content/site";
 
+const linkClass =
+  "inline-block py-[12px] text-[#e0e0e0] transition-colors duration-200 hover:text-white";
+
+// Orden del pie: Marketing Digital, SEO, Google Ads.
+const footerServices = [...services].sort(
+  (a, b) =>
+    ["marketing", "seo", "sem"].indexOf(a.key) -
+    ["marketing", "seo", "sem"].indexOf(b.key)
+);
+
 export function Footer() {
   return (
-    <footer className="bg-[var(--color-ink-black)] text-white">
-      <div className="mx-auto grid max-w-[1280px] gap-40 px-24 py-64 md:grid-cols-4 md:px-80">
+    <footer className="bg-[#040054] text-white">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-[40px] px-[clamp(24px,5vw,80px)] py-[64px]">
         <div>
           <Image
             src="/Logo/oppi-logo-yellow.png"
@@ -14,74 +24,64 @@ export function Footer() {
             width={851}
             height={359}
             unoptimized
-            className="h-24 w-auto"
+            className="h-[24px] w-auto"
           />
-          <p className="mt-16 text-body-sm text-[var(--color-frost-gray)]">
+          <p className="mt-[16px] text-[14px] leading-[1.38] text-[#e0e0e0]">
             Te ayudamos a que te encuentren, te elijan y te compren.
           </p>
         </div>
 
         <div>
-          <p className="text-body-sm font-semibold text-white">Servicios</p>
-          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
-            {services.map((service) => (
-              <li key={service.href}>
-                <Link href={service.href} className="inline-block py-12 hover:text-white">
-                  {service.navLabel}
-                </Link>
-              </li>
+          <p className="text-[14px] font-bold">Servicios</p>
+          <div className="mt-[16px] flex flex-col text-[14px]">
+            {footerServices.map((service) => (
+              <Link key={service.href} href={service.href} className={linkClass}>
+                {service.navLabel}
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div>
-          <p className="text-body-sm font-semibold text-white">Empresa</p>
-          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
-            <li>
-              <Link href="/quienes-somos" className="inline-block py-12 hover:text-white">
-                Quiénes Somos
-              </Link>
-            </li>
-            <li>
-              <Link href="/experiencia" className="inline-block py-12 hover:text-white">
-                Experiencia
-              </Link>
-            </li>
-            <li>
-              <Link href="/blog" className="inline-block py-12 hover:text-white">
-                Blog
-              </Link>
-            </li>
-          </ul>
+          <p className="text-[14px] font-bold">Empresa</p>
+          <div className="mt-[16px] flex flex-col text-[14px]">
+            <Link href="/quienes-somos" className={linkClass}>
+              Quiénes Somos
+            </Link>
+            <Link href="/experiencia" className={linkClass}>
+              Experiencia
+            </Link>
+            <Link href="/blog" className={linkClass}>
+              Blog
+            </Link>
+          </div>
         </div>
 
         <div>
-          <p className="text-body-sm font-semibold text-white">Contacto</p>
-          <ul className="mt-16 space-y-0 text-body-sm text-[var(--color-frost-gray)]">
-            <li>
-              <a
+          <p className="text-[14px] font-bold">Contacto</p>
+          <div className="mt-[16px] flex flex-col text-[14px]">
+            <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block py-12 hover:text-white"
+              className={linkClass}
             >
               WhatsApp: {site.whatsappDisplay}
             </a>
-            </li>
-          </ul>
+          </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-24 py-24 text-center text-caption text-[var(--color-ash)] md:px-80">
+      <div className="border-t border-white/10 p-[24px] text-center text-[12px] text-[#a6a6a6]">
         © {new Date().getFullYear()} Oppi. Todos los derechos reservados.{" "}
-        <Link href="/politica-de-privacidad" className="underline hover:text-white">
+        <Link href="/politica-de-privacidad" className="underline">
           Política de privacidad
         </Link>
       </div>
 
       <p
         aria-hidden="true"
-        className="select-none overflow-hidden px-24 pb-24 text-center text-[18vw] font-bold leading-none tracking-tighter text-white/5 md:text-[12vw]"
+        className="select-none overflow-hidden px-[24px] pb-[24px] text-center font-[family-name:var(--font-archivo-black)] text-[14vw] leading-none tracking-[-0.04em] text-white/5"
       >
         Oppi
       </p>

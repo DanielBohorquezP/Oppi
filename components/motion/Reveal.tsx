@@ -1,53 +1,29 @@
-"use client";
-
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import type { ElementType, ReactNode } from "react";
 
 /*
-  Patrón de "scroll-reveal" (fade-up al entrar en viewport) extraído del
-  análisis estructural de turn.io — ahí se implementa con CSS + IntersectionObserver
-  (opacity/translateY, ~0.6s ease-out). Se aplica aquí a bloques completos de
-  sección (no card por card) siguiendo la regla de animar 1-2 elementos clave
-  por vista, no todo a la vez.
+  Envuelve un bloque para que aparezca al hacer scroll. La animación la hace
+  MotionRoot (components/motion/MotionRoot.tsx) a partir de `data-reveal` y
+  `data-delay`; este componente solo los pone.
 */
+export type RevealVariant = "up" | "left" | "right" | "scale" | "fade" | "line";
+
 export function Reveal({
   children,
-  className = "",
+  className,
+  variant = "up",
+  delay,
+  as: Tag = "div",
 }: {
-  children: ReactNode;
+  children?: ReactNode;
   className?: string;
+  variant?: RevealVariant;
+  /** Retraso en ms. */
+  delay?: number;
+  as?: ElementType;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  );
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el || visible) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, [visible]);
-
   return (
-    <div
-      ref={ref}
-      className={`transition-[opacity,transform] duration-700 ease-out ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-24 opacity-0"
-      } ${className}`}
-    >
+    <Tag className={className} data-reveal={variant} data-delay={delay}>
       {children}
-    </div>
+    </Tag>
   );
 }

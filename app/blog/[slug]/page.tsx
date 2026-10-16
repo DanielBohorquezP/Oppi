@@ -42,14 +42,21 @@ export default async function BlogPostPage(props: PageProps<"/blog/[slug]">) {
           {formatPostDate(post.date)}
         </span>
       </div>
-      <h1 className="tracking-heading mt-16 text-heading leading-[1.1] font-semibold text-balance text-[var(--color-ink-black)] md:text-[48px]">
+      <h1
+        data-reveal="up"
+        data-delay="120"
+        className="tracking-heading mt-16 text-heading leading-[1.1] font-semibold text-balance text-[var(--color-ink-black)] md:text-[48px]"
+      >
         {post.title}
       </h1>
       <div
         className="prose-oppi mt-40"
         dangerouslySetInnerHTML={{ __html: post.contentHtml }}
       />
-      <aside className="mt-56 rounded-[var(--radius-cards)] bg-[var(--color-ink-black)] p-32">
+      <aside
+        data-reveal="scale"
+        className="mt-56 rounded-[var(--radius-cards)] bg-[var(--color-ink-black)] p-32"
+      >
         <p
           className="text-[22px] leading-[1.3] text-white"
           style={{ fontFamily: "var(--font-archivo-black)" }}

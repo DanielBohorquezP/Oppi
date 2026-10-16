@@ -1,63 +1,77 @@
-import { Reveal } from "@/components/motion/Reveal";
-import { Eyebrow } from "@/components/ui/Eyebrow";
-import { TeamAvatar } from "@/components/ui/TeamAvatar";
+import Link from "next/link";
+import { PiArrowRight } from "react-icons/pi";
+import { TeamPhoto } from "@/components/ui/TeamPhoto";
 import { team } from "@/content/team";
 
-// Cada persona sobre su color (Angeline amarillo, Daniel índigo, Juanse coral)
-// y, debajo, el dolor del cliente que resuelve.
-const members = [
-  { member: team.marketing, surface: "var(--color-brand-yellow)" },
-  { member: team.seo, surface: "var(--color-ink-black)" },
-  { member: team.sem, surface: "var(--color-coral-pulse)" },
-];
+const cards = [
+  { key: "marketing", surface: "#ffe848", circle: "rgba(255,255,255,0.45)" },
+  { key: "seo", surface: "#040054", circle: "rgba(255,255,255,0.1)" },
+  { key: "sem", surface: "#f8673e", circle: "rgba(255,255,255,0.25)" },
+] as const;
 
+// "Una persona a cargo de cada frente": 3 tarjetas que enlazan a su servicio.
 export function TeamSection() {
   return (
-    <section className="bg-[var(--color-cloud-gray)] px-24 py-64 md:px-80 md:py-96">
+    <section className="bg-[#fff8e6] px-[clamp(24px,5vw,80px)] py-[clamp(72px,9vw,128px)]">
       <div className="mx-auto max-w-[1280px]">
-        <div className="flex flex-wrap items-end justify-between gap-x-64 gap-y-24">
-          <div>
-            <Eyebrow tone="coral" className="mb-12">
+        <div className="flex flex-wrap items-end justify-between gap-x-[64px] gap-y-[24px]">
+          <div data-reveal="up" className="max-w-[640px]">
+            <p className="text-[14px] font-bold tracking-[0.06em] text-[#f8673e] uppercase">
               Nuestro equipo
-            </Eyebrow>
-            <h2 className="tracking-heading max-w-[640px] text-heading font-semibold text-balance text-[var(--color-ink-black)] md:text-heading-lg">
+            </p>
+            <h2 className="mt-[12px] text-[length:clamp(32px,4vw,56px)] leading-[1.05] tracking-[-0.02em] text-balance text-[#040054]">
               Una persona a cargo de cada frente
             </h2>
           </div>
-          <p className="max-w-[360px] text-body-lg text-[var(--color-graphite)]">
+          <p
+            data-reveal="up"
+            data-delay="120"
+            className="max-w-[360px] text-[16px] leading-[1.5] text-[#3d3d3d]"
+          >
             Un equipo pequeño y cercano: hablas directamente con quien hace el
             trabajo.
           </p>
         </div>
-        <Reveal className="mt-48 grid gap-24 md:grid-cols-3">
-          {members.map(({ member, surface }) => (
-            <article
-              key={member.key}
-              className="flex flex-col overflow-hidden rounded-[var(--radius-cards)] border border-black/5 bg-white shadow-[var(--shadow-subtle)]"
-            >
-              <div
-                className="flex h-[260px] items-end justify-center overflow-hidden pt-24"
-                style={{ backgroundColor: surface }}
+        <div className="mt-[48px] grid grid-cols-[repeat(auto-fit,minmax(min(100%,300px),1fr))] gap-[20px]">
+          {cards.map((card, i) => {
+            const member = team[card.key];
+            return (
+              <Link
+                key={card.key}
+                href={`/servicios/${card.key}`}
+                data-reveal="up"
+                data-delay={i * 120}
+                className="relative flex flex-col overflow-hidden rounded-[28px] text-[#040054] [transition:transform_500ms_cubic-bezier(.16,1,.3,1),box-shadow_500ms] hover:text-[#040054] hover:shadow-[0_36px_70px_-30px_rgba(4,0,84,0.4)] hover:[transform:translateY(-10px)]"
+                style={{ background: card.surface }}
               >
-                <TeamAvatar member={member} height={236} />
-              </div>
-              <div className="flex flex-1 flex-col p-32">
-                <p className="text-body-sm font-semibold uppercase tracking-wide text-[var(--color-coral-pulse)]">
-                  {member.role}
-                </p>
-                <h3 className="mt-8 text-[24px] leading-[1.25] font-semibold text-[var(--color-ink-black)]">
-                  {member.name}
-                </h3>
-                <p className="mt-12 flex-1 text-body text-[var(--color-graphite)]">
-                  {member.blurb}
-                </p>
-                <p className="mt-20 text-body font-bold text-[var(--color-ink-black)]">
-                  Te ayuda si: {member.helpsIf}
-                </p>
-              </div>
-            </article>
-          ))}
-        </Reveal>
+                <div className="relative flex justify-center overflow-hidden pt-[36px]">
+                  <div
+                    aria-hidden="true"
+                    className="absolute bottom-[-120px] left-1/2 -ml-[160px] h-[320px] w-[320px] rounded-full"
+                    style={{ background: card.circle }}
+                  />
+                  <TeamPhoto member={card.key} height={270} className="relative" />
+                </div>
+                <div className="flex flex-1 flex-col bg-white p-[28px]">
+                  <p className="text-[12px] font-bold tracking-[0.06em] text-[#f8673e] uppercase">
+                    {member.role}
+                  </p>
+                  <h3 className="mt-[8px] text-[24px] leading-[1.25]">{member.name}</h3>
+                  <p className="mt-[12px] flex-1 text-[15px] leading-[1.55] text-[#3d3d3d]">
+                    {member.blurb}
+                  </p>
+                  <p className="mt-[20px] rounded-[14px] bg-[#fff8e6] px-[14px] py-[12px] text-[14px] leading-[1.4] font-bold text-[#040054]">
+                    Te ayuda si: {member.helpsIf}
+                  </p>
+                  <span className="mt-[16px] flex items-center gap-[8px] text-[14px] font-bold text-[#f8673e]">
+                    Ver su servicio
+                    <PiArrowRight aria-hidden="true" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

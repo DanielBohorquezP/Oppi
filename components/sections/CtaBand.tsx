@@ -17,7 +17,7 @@ export function CtaBand({
 }) {
   return (
     <section className="px-24 py-64 md:px-80 md:py-96">
-      <Reveal className="mx-auto max-w-[1280px] rounded-[32px] bg-[var(--color-ink-black)] px-32 py-64 text-center md:px-80 md:py-96">
+      <Reveal variant="scale" className="mx-auto max-w-[1280px] rounded-[32px] bg-[var(--color-ink-black)] px-32 py-64 text-center md:px-80 md:py-96">
         <h2 className="tracking-heading mx-auto max-w-[900px] text-heading font-semibold text-balance text-white md:text-[52px] md:leading-[1.08]">
           {title}
         </h2>
