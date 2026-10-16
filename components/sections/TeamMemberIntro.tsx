@@ -64,7 +64,7 @@ export function TeamMemberIntro({
           height={400}
           reveal="up"
           delay={200}
-          className="relative z-[1] mr-[4%] self-end"
+          className="relative z-[1] mr-[4%] self-end max-sm:mr-0 max-sm:self-center"
         />
       </div>
     </section>

@@ -28,7 +28,7 @@ export function OtherServices({ current }: { current: ServiceKey }) {
               className="flex flex-col overflow-hidden rounded-[24px] border border-[rgba(4,0,84,0.06)] bg-white text-[#040054] [transition:transform_500ms_cubic-bezier(.16,1,.3,1),box-shadow_500ms] hover:text-[#040054] hover:shadow-[0_30px_60px_-28px_rgba(4,0,84,0.35)] hover:[transform:translateY(-8px)]"
             >
               <div
-                className="flex min-h-[170px] flex-col justify-between gap-[24px] px-[32px] pt-[28px] pb-[32px]"
+                className="flex min-h-[170px] flex-col justify-between gap-[24px] px-[24px] pt-[24px] pb-[28px] sm:px-[32px] sm:pt-[28px] sm:pb-[32px]"
                 style={{ background: service.painSurface }}
               >
                 <p
@@ -45,7 +45,7 @@ export function OtherServices({ current }: { current: ServiceKey }) {
                   “{service.pain}”
                 </p>
               </div>
-              <div className="flex items-center justify-between gap-[16px] px-[32px] pt-[24px] pb-[28px]">
+              <div className="flex items-center justify-between gap-[16px] px-[24px] pt-[24px] pb-[28px] sm:px-[32px]">
                 <div>
                   <p className="text-[13px] font-bold tracking-[0.05em] text-[#7a7a7a] uppercase">
                     {service.tag}

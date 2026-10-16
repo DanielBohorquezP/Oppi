@@ -168,7 +168,7 @@ export default function QuienesSomosPage() {
       >
         <div
           data-reveal="scale"
-          className="relative isolate mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-[32px] overflow-hidden rounded-[36px] bg-[#040054] p-[clamp(40px,6vw,80px)]"
+          className="relative isolate mx-auto flex max-w-[1280px] flex-wrap items-center justify-between gap-[32px] overflow-hidden rounded-[36px] bg-[#040054] p-[clamp(28px,6vw,80px)]"
         >
           <CtaBlobs />
           <div className="min-w-0 flex-[1_1_460px]">

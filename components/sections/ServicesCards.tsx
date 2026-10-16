@@ -52,7 +52,7 @@ export function ServicesCards() {
               key={card.href}
               data-reveal="up"
               data-delay={i * 120}
-              className="flex flex-col rounded-[28px] border border-[rgba(4,0,84,0.08)] border-t-[3px] bg-white p-[40px] [transition:transform_500ms_cubic-bezier(.16,1,.3,1),box-shadow_500ms] hover:shadow-[0_24px_48px_-24px_rgba(4,0,84,0.25)] hover:[transform:translateY(-6px)]"
+              className="flex flex-col rounded-[28px] border border-[rgba(4,0,84,0.08)] border-t-[3px] bg-white p-[28px] sm:p-[40px] [transition:transform_500ms_cubic-bezier(.16,1,.3,1),box-shadow_500ms] hover:shadow-[0_24px_48px_-24px_rgba(4,0,84,0.25)] hover:[transform:translateY(-6px)]"
               style={{ borderTopColor: card.border }}
             >
               <span className="inline-block self-start rounded-full bg-[#fff3d6] px-[14px] py-[4px] text-[14px] text-[#3d3d3d]">

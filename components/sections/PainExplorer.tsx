@@ -86,7 +86,7 @@ export function PainExplorer({ serviceKey }: { serviceKey: ServiceKey }) {
                     setPain(i);
                     setAuto(false);
                   }}
-                  className={`relative flex cursor-pointer items-center gap-[20px] overflow-hidden rounded-[20px] border px-[28px] py-[24px] text-left [transition:background-color_450ms_cubic-bezier(.16,1,.3,1),border-color_450ms,transform_400ms_cubic-bezier(.16,1,.3,1),box-shadow_450ms] hover:[transform:translateX(6px)] ${
+                  className={`relative flex cursor-pointer items-center gap-[14px] overflow-hidden rounded-[20px] border px-[18px] py-[20px] sm:gap-[20px] sm:px-[28px] sm:py-[24px] text-left [transition:background-color_450ms_cubic-bezier(.16,1,.3,1),border-color_450ms,transform_400ms_cubic-bezier(.16,1,.3,1),box-shadow_450ms] hover:[transform:translateX(6px)] ${
                     on
                       ? "border-[#040054] bg-[#040054] shadow-[0_24px_50px_-24px_rgba(4,0,84,0.55)]"
                       : "border-[rgba(4,0,84,0.12)] bg-white"
@@ -159,14 +159,28 @@ export function PainExplorer({ serviceKey }: { serviceKey: ServiceKey }) {
               <div className="mt-auto flex flex-wrap items-center justify-between gap-[20px] pt-[32px]">
                 <div className="flex items-center gap-[12px]">
                   <span className="block h-[52px] w-[52px] overflow-hidden rounded-full bg-[#ffe848]">
-                    <Image
-                      src={member.photoSrc ?? ""}
-                      alt={member.name}
-                      width={Math.round(1000 * (member.photoRatio ?? 1))}
-                      height={1000}
-                      unoptimized
-                      className="h-[120%] w-full object-cover object-top"
-                    />
+                    {serviceKey === "marketing" ? (
+                      // La foto de Angeline tiene aire arriba: se encuadra en la cara.
+                      <span
+                        role="img"
+                        aria-label={member.name}
+                        className="block h-full w-full bg-no-repeat"
+                        style={{
+                          backgroundImage: `url(${member.photoSrc})`,
+                          backgroundSize: "84px auto",
+                          backgroundPosition: "-8px -32px",
+                        }}
+                      />
+                    ) : (
+                      <Image
+                        src={member.photoSrc ?? ""}
+                        alt={member.name}
+                        width={Math.round(1000 * (member.photoRatio ?? 1))}
+                        height={1000}
+                        unoptimized
+                        className="h-[120%] w-full object-cover object-top"
+                      />
+                    )}
                   </span>
                   <div>
                     <p className="text-[15px] font-bold text-white">{member.name}</p>

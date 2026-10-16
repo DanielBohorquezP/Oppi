@@ -11,7 +11,7 @@ export function FinalCta() {
     <section className="bg-white px-[clamp(24px,5vw,80px)] py-[clamp(72px,9vw,128px)]">
       <div
         data-reveal="scale"
-        className="relative isolate mx-auto flex max-w-[1280px] flex-wrap items-end justify-between gap-[40px] overflow-hidden rounded-[36px] bg-[#ffe848] p-[clamp(40px,6vw,80px)]"
+        className="relative isolate mx-auto flex max-w-[1280px] flex-wrap items-end justify-between gap-[40px] overflow-hidden rounded-[36px] bg-[#ffe848] p-[clamp(28px,6vw,80px)]"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
           <Blob
@@ -56,7 +56,7 @@ export function FinalCta() {
             </a>
           </div>
         </div>
-        <div className="mb-[calc(-1*clamp(40px,6vw,80px))] flex flex-[0_1_auto] items-end">
+        <div className="mb-[calc(-1*clamp(28px,6vw,80px))] flex flex-[0_1_auto] items-end">
           <TeamPhoto
             member="marketing"
             height={210}
