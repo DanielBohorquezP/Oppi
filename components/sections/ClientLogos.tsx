@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { clients } from "@/content/clients";
 
@@ -17,9 +16,11 @@ function LogoSet({ hidden }: { hidden: boolean }) {
         clients.map((client) => {
           const duplicate = hidden || round > 0;
           return (
-            <Link
+            <a
               key={`${round}-${client.name}`}
-              href="/experiencia"
+              href={client.href || "/experiencia"}
+              {...(client.href ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              aria-label={`Visitar el sitio de ${client.name}`}
               aria-hidden={duplicate ? true : undefined}
               tabIndex={duplicate ? -1 : undefined}
               className="block shrink-0"
@@ -32,7 +33,7 @@ function LogoSet({ hidden }: { hidden: boolean }) {
                 unoptimized
                 className="block h-[72px] w-auto"
               />
-            </Link>
+            </a>
           );
         })
       )}
