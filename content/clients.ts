@@ -20,4 +20,32 @@ export const clients = [
     height: 301,
     href: "https://cyrruscs.com/",
   },
+  {
+    name: "Churchs Texas Chicken",
+    logo: "/clientes/churchs-texas-chicken.png",
+    width: 800,
+    height: 779,
+    href: "https://www.churchs.com/",
+  },
+  {
+    name: "ANYA Finca Cafetera",
+    logo: "/clientes/anya-finca-cafetera.png",
+    width: 800,
+    height: 435,
+    href: "",
+  },
+  {
+    name: "John Deere",
+    logo: "/clientes/john-deere.png",
+    width: 800,
+    height: 519,
+    href: "https://www.deere.com/",
+  },
+  {
+    name: "AnamGra",
+    logo: "/clientes/anamgra.png",
+    width: 584,
+    height: 538,
+    href: "https://www.anamgra.com/",
+  },
 ];
